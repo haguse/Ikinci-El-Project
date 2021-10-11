@@ -1,8 +1,7 @@
 import React from "react";
 import logo from "../../images/logo.svg";
 import { Wrapper } from "./ScHeader";
-import { AiOutlinePlus } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
+import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -22,7 +21,7 @@ const Header = () => {
         </button>
         <button>
           <div>
-            <CgProfile />
+            <AiOutlineUser />
             <span>Hesabım</span>
           </div>
         </button>

@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     padding: 1rem 2rem;
   }
 
-  @media only screen and (max-width: 434px) {
+  @media only screen and (max-width: 465px) {
     & button {
       margin-top: 0.4rem;
     }
@@ -23,10 +23,12 @@ export const Wrapper = styled.div`
   & button {
     margin-left: 1rem;
     border: none;
-    padding: 0.4rem 1rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
     color: #4b9ce2;
     background-color: #f0f8ff;
+    border-radius: 0.3rem;
+    min-width: 7.2rem;
 
     & div {
       display: flex;
