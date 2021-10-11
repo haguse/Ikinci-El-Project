@@ -5,6 +5,10 @@ import logo from "../../images/logo.png";
 import womanImage from "../../images/Sign Up/Woman.png";
 
 const index = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Wrapper>
       <div className="container__image">
@@ -14,24 +18,24 @@ const index = () => {
         <div>
           <img src={logo} alt="İkini El" />
         </div>
-        <div className="signup">
-          <div className="signup__texts">
-            <p className="signup__texts__signup">Üye Ol</p>
+        <div className="sign">
+          <div className="sign__texts">
+            <p className="sign__texts__sign">Üye Ol</p>
             <p>Fırsatlardan yararlanmak için üye ol!</p>
           </div>
-          <div className="signup__form">
-            <form>
-              <div className="signup__form__item">
+          <div className="sign__form">
+            <form onSubmit={handleSubmit}>
+              <div className="sign__form__item">
                 <label htmlFor="">Email</label>
                 <input type="email" placeholder="Email@example.com" />
               </div>
-              <div className="signup__form__item">
+              <div className="sign__form__item">
                 <label htmlFor="">Şifre</label>
-                <input type="password" />
+                <input type="password" placeholder="*****" />
               </div>
               <button>Üye Ol</button>
             </form>
-            <p className="signup__login">
+            <p className="sign__login">
               Hesabın var mı?{" "}
               <span>
                 <Link to="/sign-in">Giriş Yap</Link>
