@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Wrapper } from "./ScSignIn";
-import logo from "../../images/logo.png";
+import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
+import { signIn } from "../../api";
 
-const index = () => {
+const SignIn = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    signIn(user);
   };
+
+  const handleInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
   return (
     <Wrapper>
       <div className="container__image">
@@ -26,16 +38,28 @@ const index = () => {
             <form onSubmit={handleSubmit}>
               <div className="sign__form__item">
                 <label htmlFor="">Email</label>
-                <input type="email" placeholder="Email@example.com" />
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email@example.com"
+                  onChange={handleInput}
+                  value={user.email}
+                />
               </div>
               <div className="sign__form__item">
                 <label htmlFor="">Şifre</label>
-                <input type="password" placeholder="*****" />
+                <input
+                  name="password"
+                  type="password"
+                  placeholder="*****"
+                  onChange={handleInput}
+                  value={user.password}
+                />
               </div>
               <button>Giriş Yap</button>
             </form>
             <p className="sign__login">
-              Hesabın yok mu?{" "}
+              Hesabın yok mu?
               <span>
                 <Link to="/sign-up">Üye Ol</Link>
               </span>
@@ -47,4 +71,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SignIn;
