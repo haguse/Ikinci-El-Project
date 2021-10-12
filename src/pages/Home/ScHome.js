@@ -32,14 +32,6 @@ export const Wrapper = styled.div`
     color: #4b9ce2;
   }
 
-  .categories {
-    margin-top: 0.5rem;
-    ul {
-      display: flex;
-      justify-content: space-around;
-    }
-  }
-
   .products {
     display: flex;
     align-items: center;

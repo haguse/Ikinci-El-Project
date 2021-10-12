@@ -4,6 +4,7 @@ import Banner1 from "../../images/Home/Banner1.png";
 import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../components/Spinner";
+import Categories from "../../components/Categories";
 
 const Home = () => {
   const [products, setProduts] = useState([]);
@@ -19,40 +20,9 @@ const Home = () => {
     <>
       <Wrapper>
         <img className="banner" src={Banner1} alt="Tarz Ürünler" />
-        <div className="categories">
-          <ul>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="#" activeClassName="selected">
-                Hepsi
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+
+        <Categories />
+
         <div className="products">
           {isLoading && (
             <div className="spinner">
@@ -61,7 +31,6 @@ const Home = () => {
           )}
 
           {products.map((product) => {
-            console.log(product);
             return (
               <Link key={product.id} to={`/product/${product.id}`}>
                 <div className="product">
