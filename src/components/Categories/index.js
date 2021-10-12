@@ -10,11 +10,17 @@ const Categories = () => {
 
   useEffect(() => {
     dispatch(getAllCategories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Wrapper className="categories">
       <ul>
+        <li>
+          <NavLink to="#" activeClassName="selected">
+            Hepsi
+          </NavLink>
+        </li>
         {categories.map((category) => (
           <li key={category.id}>
             <NavLink to="#" activeClassName="selected">

@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "./ScHome";
 import Banner1 from "../../images/Home/Banner1.png";
-import { Link, NavLink } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import Categories from "../../components/Categories";
+import { getAllProducts } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
-  const [products, setProduts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => setProduts(res.data))
-      .then(setIsLoading(false));
+    dispatch(getAllProducts());
+    setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(products);
 
   return (
     <>
@@ -35,19 +39,19 @@ const Home = () => {
               <Link key={product.id} to={`/product/${product.id}`}>
                 <div className="product">
                   <div className="product__img">
-                    <img
-                      src="https://storage.googleapis.com/frontend-bootcamp-e9376.appspot.com/products/images/image5.png?GoogleAccessId=firebase-adminsdk-dli7s%40frontend-bootcamp-e9376.iam.gserviceaccount.com&Expires=16731003600&Signature=WMgXsBCNAZesTfkqPgDDumDoYC5C7lr%2BHroPa%2BJ8oypDP9Svldq7GGVxP2IKtqpbytveAhZ0iO6RD27MyJjTjWB7rH8Q9tFiyQEW4Ay9z7YEiuat5NoBCun7IEoPNQ9gWugEl%2BK82wsIx7ae8lcCZZfZRyTCZOJf7A6UMqJ%2BnzTYmHgdGhywIeR6azQn4Jbqc7Zkneyjyg7RxFmyv8h%2FvWX9NL14r%2FvD9ctduN8EqDyr7f0AesR%2FfjS3EVHY3gYdVkrtJ%2FHhZTOil%2Bl6o5WEszlu5eJHTg5bl5KaQDU%2BFcbHjsqF5xlMf5jtlZ3OEpsDPHak5XnCjb4LQFBenheEKQ%3D%3D"
-                      alt="Product"
-                    ></img>
+                    <img src={product.imageUrl} alt="Product"></img>
                   </div>
                   <div className="product__info">
-                    <p className="product__info__brand">Lev'is</p>
+                    <p className="product__info__brand">
+                      {product.brand.title}
+                    </p>
                     <p>
-                      <span>Renk: </span>Lacivert
+                      <span>Renk: </span>
+                      {product.color.title}
                     </p>
                   </div>
                   <div className="product__price">
-                    <span>1.999,00TL</span>
+                    <span>{product.price}</span>
                   </div>
                 </div>
               </Link>
