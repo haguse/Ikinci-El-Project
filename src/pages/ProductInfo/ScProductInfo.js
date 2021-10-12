@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
         width: 100%;
         max-height: 500px;
         border-radius: 0.3rem;
+        max-width: 600px;
       }
     }
 

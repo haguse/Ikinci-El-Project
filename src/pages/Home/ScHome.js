@@ -48,7 +48,6 @@ export const Wrapper = styled.div`
     margin-top: 1rem;
   }
 
-
   .product {
     padding: 1rem 0;
     background-color: white;

@@ -18,6 +18,7 @@ const SignIn = () => {
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
   };
 
   return (
@@ -59,7 +60,7 @@ const SignIn = () => {
               <button>Giriş Yap</button>
             </form>
             <p className="sign__login">
-              Hesabın yok mu?
+              Hesabın yok mu ?
               <span>
                 <Link to="/sign-up">Üye Ol</Link>
               </span>

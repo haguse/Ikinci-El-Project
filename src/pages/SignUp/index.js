@@ -18,6 +18,7 @@ const SignUp = () => {
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
   };
   return (
     <Wrapper>
@@ -52,13 +53,13 @@ const SignUp = () => {
                   type="password"
                   placeholder="*****"
                   onChange={handleInput}
-                  value={user.email}
+                  value={user.password}
                 />
               </div>
               <button type="submit">Üye Ol</button>
             </form>
             <p className="sign__login">
-              Hesabın var mı?{" "}
+              Hesabın var mı ?
               <span>
                 <Link to="/sign-in">Giriş Yap</Link>
               </span>
