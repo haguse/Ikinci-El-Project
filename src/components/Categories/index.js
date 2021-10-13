@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Wrapper } from "./ScCategories";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCategories } from "../../actions";
-import { filterProductsByCategory, getAllProducts } from "../../actions";
+import { getAllCategories } from "../../actions/categoriesActions";
+import {
+  filterProductsByCategory,
+  getAllProducts,
+} from "../../actions/productsActions";
 
 const Categories = () => {
   const categories = useSelector((state) => state.categories);
@@ -37,7 +40,7 @@ const Categories = () => {
             Hepsi
           </NavLink>
         </li>
-        {categories.map((category) => (
+        {categories.categoriesData.map((category) => (
           <li key={category.id}>
             <NavLink
               onClick={() => filterProducts(category.id)}

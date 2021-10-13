@@ -4,13 +4,13 @@ import Banner1 from "../../images/Home/Banner1.png";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import Categories from "../../components/Categories";
-import { getAllProducts } from "../../actions";
+import { getAllProducts } from "../../actions/productsActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.filteredProducts);
+  const products = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -34,7 +34,7 @@ const Home = () => {
             </div>
           )}
 
-          {products.map((product) => {
+          {products.filteredProducts.map((product) => {
             return (
               <Link key={product.id} to={`/product/${product.id}`}>
                 <div className="product">
