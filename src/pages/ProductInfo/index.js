@@ -7,6 +7,7 @@ const ProductInfo = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const { id } = useParams();
   return (
     <Wrapper>

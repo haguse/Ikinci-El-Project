@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.filteredProducts);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -63,4 +63,5 @@ const Home = () => {
   );
 };
 
+// export default React.memo(Home);
 export default Home;

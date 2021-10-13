@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const baseUrl = `http://bootcampapi.techcs.io/api/fe/v1`;
 
 export const getAllCategories = () => (dispatch) => {
@@ -33,4 +34,11 @@ export const getAllProducts = () => (dispatch) => {
         payload: err,
       })
     );
+};
+
+export const filterProductsByCategory = (id) => {
+  return {
+    type: "GET_PRODUCTS_BY_CATEGORY",
+    payload: id,
+  };
 };
