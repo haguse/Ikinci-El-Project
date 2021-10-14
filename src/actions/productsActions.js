@@ -1,7 +1,6 @@
 import axios from "axios";
 import PRODUCTS from "../constants/productsTypes";
-
-const baseUrl = `http://bootcampapi.techcs.io/api/fe/v1`;
+import baseUrl from "../api";
 
 export const getAllProducts = () => (dispatch) => {
   axios
@@ -25,4 +24,21 @@ export const filterProductsByCategory = (id) => {
     type: PRODUCTS.GET_PRODUCTS_BY_CATEGORY,
     payload: id,
   };
+};
+
+export const getProductById = (id) => (dispatch) => {
+  axios
+    .get(`${baseUrl}/product/${id}`)
+    .then((res) =>
+      dispatch({
+        type: PRODUCTS.GET_PRODUCT_BY_ID_SUCCESS,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch({
+        type: PRODUCTS.GET_PRODUCT_BY_ID_SUCCESS,
+        payload: err,
+      })
+    );
 };

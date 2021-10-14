@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Wrapper } from "./ScCategories";
 import { useSelector, useDispatch } from "react-redux";
@@ -37,7 +37,7 @@ const Categories = () => {
             to="#"
             activeClassName="selected"
           >
-            Hepsi
+            HEPSİ
           </NavLink>
         </li>
         {categories.categoriesData.map((category) => (

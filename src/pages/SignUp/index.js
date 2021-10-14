@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Wrapper } from "./ScSignUp";
 import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
-import { signUp } from "../../api";
+import { signUp } from "../../actions/authActions";
 
 const SignUp = () => {
   const [user, setUser] = useState({

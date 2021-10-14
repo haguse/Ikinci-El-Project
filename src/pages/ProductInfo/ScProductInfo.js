@@ -65,6 +65,7 @@ export const Wrapper = styled.div`
     &__content {
       margin-left: 1rem;
       margin-top: 2rem;
+      width: 100%;
 
       &__title {
         font-size: x-large;

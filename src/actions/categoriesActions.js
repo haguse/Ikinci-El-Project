@@ -1,7 +1,6 @@
 import axios from "axios";
 import CATEGORIES from "../constants/categoriesTypes";
-
-const baseUrl = `http://bootcampapi.techcs.io/api/fe/v1`;
+import baseUrl from "../api";
 
 export const getAllCategories = () => (dispatch) => {
   axios
