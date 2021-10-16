@@ -1,5 +1,7 @@
 import axios from "axios";
 import baseUrl from "../api";
+import { ACCESS_TOKEN_NAME } from "../api";
+import { history } from "../_helpers/history";
 
 export const signUp = (data) => {
   axios
@@ -8,7 +10,9 @@ export const signUp = (data) => {
       password: data.password,
     })
     .then((res) => {
-      console.log(res.data);
+      if (res.status === 201 || res.status === 200) {
+        history.push("/sign-in");
+      }
     });
 };
 
@@ -19,9 +23,10 @@ export const signIn = (data) => {
       password: data.password,
     })
     .then((res) => {
-      if (res.status === 201) {
+      if (res.status === 201 || res.status === 200) {
         console.log(res.status);
-        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem(ACCESS_TOKEN_NAME, res.data.access_token);
+        history.push("/");
       }
     });
 };

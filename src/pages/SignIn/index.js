@@ -5,6 +5,9 @@ import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
 import { signIn } from "../../actions/authActions";
 
+import { ACCESS_TOKEN_NAME } from "../../api";
+import { useHistory } from "react-router";
+
 const SignIn = () => {
   const [user, setUser] = useState({
     email: "",
@@ -20,6 +23,14 @@ const SignIn = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user);
   };
+
+  const history = useHistory();
+
+  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
+
+  if (token) {
+    history.push("/");
+  }
 
   return (
     <Wrapper>
@@ -62,7 +73,7 @@ const SignIn = () => {
             <p className="sign__login">
               Hesabın yok mu ?
               <span>
-                <Link to="/sign-up">Üye Ol</Link>
+                <Link to="/sign-up"> Üye Ol</Link>
               </span>
             </p>
           </div>

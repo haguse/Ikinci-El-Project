@@ -37,7 +37,7 @@ export const getProductById = (id) => (dispatch) => {
     )
     .catch((err) =>
       dispatch({
-        type: PRODUCTS.GET_PRODUCT_BY_ID_SUCCESS,
+        type: PRODUCTS.GET_PRODUCT_BY_ID_ERROR,
         payload: err,
       })
     );

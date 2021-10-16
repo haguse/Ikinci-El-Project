@@ -106,14 +106,21 @@ export const Wrapper = styled.div`
       cursor: pointer;
       border-radius: 0.4rem;
       font-size: large;
-      width: 14rem;
+      max-width: 14rem;
     }
+  }
+
+  .cant-buy {
+    padding: 1rem 1rem !important;
+    background-color: #fff0e2 !important;
+    color: #faad60 !important;
   }
 
   button:nth-child(1) {
     background-color: #4b9ce2;
     color: #f0f8ff;
   }
+
   button:nth-child(2) {
     background-color: #f0f8ff;
     color: #4b9ce2;

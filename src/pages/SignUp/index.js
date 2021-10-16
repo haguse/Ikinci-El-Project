@@ -61,7 +61,7 @@ const SignUp = () => {
             <p className="sign__login">
               Hesabın var mı ?
               <span>
-                <Link to="/sign-in">Giriş Yap</Link>
+                <Link to="/sign-in"> Giriş Yap</Link>
               </span>
             </p>
           </div>

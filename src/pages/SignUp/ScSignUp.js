@@ -77,6 +77,7 @@ export const Wrapper = styled.div`
         padding: 1rem 0rem;
         border: none;
         border-radius: 0.3rem;
+        cursor: pointer;
       }
 
       &__login {
