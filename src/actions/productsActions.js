@@ -42,3 +42,13 @@ export const getProductById = (id) => (dispatch) => {
       })
     );
 };
+
+export const purchaseProductById = (id) => (dispatch) => {
+  axios.put(`${baseUrl}/product/purchase/${id}`).then((res) => {
+    console.log(res);
+    dispatch({
+      type: PRODUCTS.PURCHASE_PRODUCT_BY_ID,
+      payload: res.data,
+    });
+  });
+};

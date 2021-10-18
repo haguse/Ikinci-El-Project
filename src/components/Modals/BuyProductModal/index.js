@@ -1,19 +1,38 @@
-import React from "react";
-import BuyProductModal from "./ScBuyProductModal";
+import React, { useRef } from "react";
+import ReactDOM from "react-dom";
+import { ModalContainer, ButtonOne, ButtonTwo } from "./ScBuyProductModal";
+import useOutsideClick from "../../../hooks/clickOutsideHook";
 
-const index = () => {
-  return (
-    <BuyProductModal>
-      <div className="modal">
+import { purchaseProductById } from "../../../actions/productsActions";
+import { useDispatch, useSelector } from "react-redux";
+
+const BuyProductModal = ({ isOpen, closeModal }) => {
+  const ref = useRef();
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.products.product);
+
+  useOutsideClick(ref, () => {
+    if (isOpen) closeModal();
+  });
+
+  const handleBuyProduct = () => {
+    dispatch(purchaseProductById(product.id));
+  };
+
+  if (!isOpen) return null;
+  return ReactDOM.createPortal(
+    <ModalContainer className="buy-product-modal">
+      <div ref={ref} className="modal">
         <p className="modal__title">Satın Al</p>
         <p className="modal__text">Satın almak istiyor musunuz?</p>
         <div className="modal__buttons">
-          <button>Satın Al</button>
-          <button>Vazgeç</button>
+          <ButtonOne onClick={handleBuyProduct}>Satın Al</ButtonOne>
+          <ButtonTwo onClick={closeModal}>Vazgeç</ButtonTwo>
         </div>
       </div>
-    </BuyProductModal>
+    </ModalContainer>,
+    document.getElementById("root")
   );
 };
 
-export default index;
+export default BuyProductModal;

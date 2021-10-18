@@ -24,7 +24,6 @@ export const signIn = (data) => {
     })
     .then((res) => {
       if (res.status === 201 || res.status === 200) {
-        console.log(res.status);
         localStorage.setItem(ACCESS_TOKEN_NAME, res.data.access_token);
         localStorage.setItem("email", data.email);
         history.push("/");

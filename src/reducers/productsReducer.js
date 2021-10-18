@@ -36,6 +36,11 @@ const productsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         errorMessage: action.payload,
       };
+    case PRODUCTS.PURCHASE_PRODUCT_BY_ID:
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
     default:
       return state;
   }

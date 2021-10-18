@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const BuyProductModal = styled.div`
+export const ModalContainer = styled.div`
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -28,17 +28,25 @@ const BuyProductModal = styled.div`
       margin-top: 2rem;
       text-align: center;
     }
-  }
-
-  & button {
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.4rem;
-    font-size: large;
-    max-width: 14rem;
+    & button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 0.4rem;
+      font-size: large;
+      max-width: 14rem;
+    }
   }
 `;
 
-export default BuyProductModal;
+export const ButtonOne = styled.button`
+  background-color: #4b9ce2;
+  color: #f0f8ff;
+`;
+
+export const ButtonTwo = styled.button`
+  background-color: #f0f8ff;
+  color: #4b9ce2;
+  margin-left: 1rem;
+`;

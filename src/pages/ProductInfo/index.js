@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Wrapper } from "./ScProductInfo";
+import { Wrapper, ButtonOne, ButtonTwo } from "./ScProductInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../actions/productsActions";
-import NotFound404 from "../NotFound404";
+// import NotFound404 from "../NotFound404";
 import BuyProductModal from "../../components/Modals/BuyProductModal";
+import Loading from "../../components/Spinner";
 
 const ProductInfo = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  // const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showBuyModal, setShowBuyModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,14 +18,17 @@ const ProductInfo = () => {
   }, [id, dispatch]);
 
   const product = useSelector((state) => state.products.product);
-
-  console.log({ product });
-  console.log(product.isSold);
+  console.log(product);
 
   if (typeof product.imageUrl === "string") {
     return (
       <Wrapper>
-        {/* {showBuyModal && <BuyProductModal />} */}
+        {showBuyModal && (
+          <BuyProductModal
+            isOpen={showBuyModal}
+            closeModal={() => setShowBuyModal(false)}
+          />
+        )}
         <div className="product">
           <div className="product__image">
             <img src={product.imageUrl} alt="Product" />
@@ -45,14 +49,16 @@ const ProductInfo = () => {
             </div>
             <p className="product__content__price">{product.price}</p>
             {product.isSold ? (
-              <div className="">
+              <div className="product__content__button">
                 <button className="cant-buy">Bu Ürün Satışda Değil</button>
               </div>
             ) : (
-              <div className="">
+              <div className="product__content__button">
                 {/* <button onClick={() => setShowBuyModal(true)}>Satın Al</button> */}
-                <button>Satın Al</button>
-                <button>Teklif Ver</button>
+                <ButtonOne onClick={() => setShowBuyModal(true)}>
+                  Satın Al
+                </ButtonOne>
+                <ButtonTwo>Teklif Ver</ButtonTwo>
               </div>
             )}
             <p className="product__content__desc__title">Açıklama</p>
@@ -62,7 +68,11 @@ const ProductInfo = () => {
       </Wrapper>
     );
   } else {
-    return <NotFound404 />;
+    return (
+      <div className="loading">
+        <Loading />
+      </div>
+    );
   }
 };
 

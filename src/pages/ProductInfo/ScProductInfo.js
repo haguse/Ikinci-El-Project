@@ -116,18 +116,18 @@ export const Wrapper = styled.div`
     color: #faad60 !important;
   }
 
-  button:nth-child(1) {
-    background-color: #4b9ce2;
-    color: #f0f8ff;
-  }
-
-  button:nth-child(2) {
-    background-color: #f0f8ff;
-    color: #4b9ce2;
-    margin-left: 1rem;
-  }
-
   @media only screen and (max-width: 768px) {
     padding: 1rem 2rem;
   }
+`;
+
+export const ButtonOne = styled.button`
+  background-color: #4b9ce2;
+  color: #f0f8ff;
+`;
+
+export const ButtonTwo = styled.button`
+  background-color: #f0f8ff;
+  color: #4b9ce2;
+  margin-left: 1rem;
 `;
