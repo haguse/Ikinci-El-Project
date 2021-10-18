@@ -38,7 +38,7 @@ const SignIn = () => {
         <img src={womanImage} alt="" />
       </div>
       <div className="container__content">
-        <div>
+        <div className="container__content__img">
           <img src={logo} alt="İkini El" />
         </div>
         <div className="sign">

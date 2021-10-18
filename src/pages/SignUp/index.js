@@ -26,7 +26,7 @@ const SignUp = () => {
         <img src={womanImage} alt="" />
       </div>
       <div className="container__content">
-        <div>
+        <div className="container__content__img">
           <img src={logo} alt="İkini El" />
         </div>
         <div className="sign">
@@ -59,7 +59,7 @@ const SignUp = () => {
               <button type="submit">Üye Ol</button>
             </form>
             <p className="sign__login">
-              Hesabın var mı ?
+              Hesabın var mı?
               <span>
                 <Link to="/sign-in"> Giriş Yap</Link>
               </span>

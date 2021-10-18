@@ -3,13 +3,14 @@ import { Wrapper } from "./ScProfile";
 import { AiOutlineUser } from "react-icons/ai";
 
 const index = () => {
+  const email = localStorage.getItem("email");
   return (
     <Wrapper>
       <div className="profile__info">
         <div>
           <AiOutlineUser />
         </div>
-        <p>asdadasd@gmail.com</p>
+        <p>{email}</p>
       </div>
     </Wrapper>
   );
