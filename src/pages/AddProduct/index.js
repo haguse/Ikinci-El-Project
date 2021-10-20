@@ -34,8 +34,6 @@ const AddProduct = () => {
   const colors = useSelector((state) => state.colors);
   const status = useSelector((state) => state.status);
 
-  const [newProductImage, setNewProductImage] = useState(null);
-
   const [newProduct, setNewProduct] = useState({
     price: 0,
     imageUrl: "",
@@ -105,12 +103,7 @@ const AddProduct = () => {
     });
   };
 
-  const handleFile = (e) => {
-    setNewProductImage(e.target.files[0]);
-  };
-
   const handleIsOfferable = (nextState) => {
-    // setNewProductIsOfferable(nextState);
     setNewProduct({
       ...newProduct,
       isOfferable: nextState,
@@ -229,8 +222,7 @@ const AddProduct = () => {
                 <p>Sürükleyip bırakarak yükle</p>
                 <p>veya</p>
               </div>
-              {/* <button>Görsel Seçin</button> */}
-              <input type="file" name="" id="" onChange={handleFile} />
+              <button>Görsel Seçin</button>
               <p className="add-file__wrapper__size">
                 PNG ve JPEG Dosya boyutu max. 100kb
               </p>
