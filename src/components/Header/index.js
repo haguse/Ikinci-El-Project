@@ -36,12 +36,14 @@ const Header = () => {
         <div className="buttons">
           {token ? (
             <>
-              <button>
-                <div>
-                  <AiOutlinePlus />
-                  <span>Ürün Ekle</span>
-                </div>
-              </button>
+              <Link to="/add-product">
+                <button>
+                  <div>
+                    <AiOutlinePlus />
+                    <span>Ürün Ekle</span>
+                  </div>
+                </button>
+              </Link>
               <Link to="/profile">
                 <button>
                   <div>

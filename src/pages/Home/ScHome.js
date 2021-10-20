@@ -45,11 +45,11 @@ export const Wrapper = styled.div`
     background-color: white;
     border-radius: 0.3rem;
     margin: 1rem 1rem;
-    width: 17rem;
+    width: 16rem;
 
     &__img {
       & img {
-        width: auto;
+        width: 90%;
         display: block;
         margin: auto;
         height: 300px;

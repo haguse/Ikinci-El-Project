@@ -130,4 +130,9 @@ export const ButtonTwo = styled.button`
   background-color: #f0f8ff;
   color: #4b9ce2;
   margin-left: 1rem;
+
+  .loading {
+    display: flex;
+    justify-content: center;
+  }
 `;

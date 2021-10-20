@@ -1,15 +1,15 @@
-import CATEGORIES from "../constants/categoriesTypes";
+import BRANDS from "../constants/brandsTypes";
 
 const INITIAL_STATE = {
-  categoriesData: [],
+  brandsData: [],
   errorMessage: "",
 };
 
 const categoriesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case CATEGORIES.GET_ALL_CATEGORIES_SUCCESS:
-      return { ...state, categoriesData: action.payload };
-    case CATEGORIES.GET_ALL_CATEGORIES_ERROR:
+    case BRANDS.GET_ALL_BRANDS_SUCCESS:
+      return { ...state, brandsData: action.payload };
+    case BRANDS.GET_ALL_BRANDS_ERROR:
       return { ...state, errorMessage: action.payload };
     default:
       return state;

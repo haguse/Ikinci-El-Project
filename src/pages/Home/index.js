@@ -15,8 +15,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllProducts());
     setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

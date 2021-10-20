@@ -21,7 +21,6 @@ const SignIn = () => {
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const history = useHistory();
