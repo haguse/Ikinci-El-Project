@@ -23,4 +23,24 @@ export const Wrapper = styled.div`
       margin-left: 2rem;
     }
   }
+
+  .offers {
+    margin-top: 1rem;
+    background-color: white;
+    padding: 1rem 1rem;
+    border-radius: 0.4rem;
+
+    &__titles {
+      display: flex;
+      color: #4b9ce2;
+      cursor: pointer;
+
+      & p:nth-child(2) {
+        margin-left: 2rem;
+      }
+    }
+    &__components {
+      margin-top: 1rem;
+    }
+  }
 `;

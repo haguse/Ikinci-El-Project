@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../actions/productsActions";
 // import NotFound404 from "../NotFound404";
 import BuyProductModal from "../../components/Modals/BuyProductModal";
+import OfferProductModal from "../../components/Modals/OfferProductModal";
 import Loading from "../../components/Spinner";
 
 const ProductInfo = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [showBuyModal, setShowBuyModal] = useState(false);
+  const [showOfferModal, setShowOfferModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,6 +29,12 @@ const ProductInfo = () => {
           <BuyProductModal
             isOpen={showBuyModal}
             closeModal={() => setShowBuyModal(false)}
+          />
+        )}
+        {showOfferModal && (
+          <OfferProductModal
+            isOpen={showOfferModal}
+            closeModal={() => setShowOfferModal(false)}
           />
         )}
         <div className="product">
@@ -47,6 +55,9 @@ const ProductInfo = () => {
               <p className="product__content__info__title">Kullanım Durumu:</p>
               <span>{product.status.title}</span>
             </div>
+            <p className="not-offerable">
+              {!product.isOfferable && "* Ürün Tekliflere Açık Değil"}
+            </p>
             <p className="product__content__price">{product.price}</p>
             {product.isSold ? (
               <div className="product__content__button">
@@ -54,11 +65,14 @@ const ProductInfo = () => {
               </div>
             ) : (
               <div className="product__content__button">
-                {/* <button onClick={() => setShowBuyModal(true)}>Satın Al</button> */}
                 <ButtonOne onClick={() => setShowBuyModal(true)}>
                   Satın Al
                 </ButtonOne>
-                <ButtonTwo>Teklif Ver</ButtonTwo>
+                {product.isOfferable && (
+                  <ButtonTwo onClick={() => setShowOfferModal(true)}>
+                    Teklif Ver
+                  </ButtonTwo>
+                )}
               </div>
             )}
             <p className="product__content__desc__title">Açıklama</p>

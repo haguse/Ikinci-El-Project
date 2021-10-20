@@ -36,7 +36,20 @@ const productsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         errorMessage: action.payload,
       };
-    case PRODUCTS.PURCHASE_PRODUCT_BY_ID:
+    case PRODUCTS.PURCHASE_PRODUCT_BY_ID_SUCCESS:
+      return {
+        ...state,
+      };
+    case PRODUCTS.PURCHASE_PRODUCT_BY_ID_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+    case PRODUCTS.OFFER_PRODUCT_SUCCESS:
+      return {
+        ...state,
+      };
+    case PRODUCTS.OFFER_PRODUCT_ERROR:
       return {
         ...state,
         errorMessage: action.payload,

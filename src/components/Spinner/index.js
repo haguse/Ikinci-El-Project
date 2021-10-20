@@ -1,17 +1,14 @@
 import React from "react";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "styled-components";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+`;
 
 const Spinner = () => {
-  return (
-    <Loader
-      type="TailSpin"
-      color="#4B9CE2"
-      height={100}
-      width={100}
-    //   timeout={3000} //3 secs
-    />
-  );
+  return <ClipLoader color="#4B9CE2" css={override} size={150} />;
 };
 
 export default Spinner;

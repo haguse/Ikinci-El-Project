@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: space-around;
 
-    @media only screen and (max-width: 1260px) {
+    @media only screen and (max-width: 1040px) {
       justify-content: flex-start;
       overflow-x: scroll;
       overflow-y: hidden;

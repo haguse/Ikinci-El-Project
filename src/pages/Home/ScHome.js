@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  color: #555555;
   min-height: 100vh;
   background-color: #f2f2f2;
   padding: 1rem 7rem;
@@ -31,20 +32,28 @@ export const Wrapper = styled.div`
   .selected {
     color: #4b9ce2;
   }
-
+  /* 
   .products {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 1rem;
+  } */
+
+  .products {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* align-items: center; */
+    grid-gap: 1rem;
   }
 
   .product {
     padding: 1rem 0;
     background-color: white;
     border-radius: 0.3rem;
-    margin: 1rem 1rem;
+    margin: 1rem auto 1rem auto;
     width: 16rem;
 
     &__img {

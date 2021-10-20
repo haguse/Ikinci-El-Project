@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  color: #555555;
   padding: 1rem 7rem;
   min-height: 100vh;
   background-color: #f2f2f2;
@@ -12,11 +13,13 @@ export const Wrapper = styled.div`
     border-radius: 0.4rem;
 
     &__image {
-      width: 100%;
+      width: 70%;
+      height: 100%;
       border-radius: 0.3rem;
 
       & img {
         width: 100%;
+        height: 100%;
         max-height: 500px;
         border-radius: 0.3rem;
         max-width: 600px;
@@ -41,6 +44,10 @@ export const Wrapper = styled.div`
       }
     }
 
+    .not-offerable {
+      margin-top: 2rem;
+    }
+
     @media only screen and (max-width: 559px) {
       button {
         display: block;
@@ -63,8 +70,8 @@ export const Wrapper = styled.div`
     }
 
     &__content {
-      margin-left: 1rem;
-      margin-top: 2rem;
+      margin-left: 4rem;
+      margin-top: 0.8rem;
       width: 100%;
 
       &__title {
@@ -132,7 +139,8 @@ export const ButtonTwo = styled.button`
   margin-left: 1rem;
 
   .loading {
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 100px;
+    left: 100px;
   }
 `;
