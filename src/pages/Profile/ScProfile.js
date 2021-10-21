@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   padding: 1rem 7rem;
   background-color: #f2f2f2;
-  height: 100vh;
+  min-height: 100vh;
+  color: #555555;
 
   @media only screen and (max-width: 768px) {
     padding: 1rem 2rem;

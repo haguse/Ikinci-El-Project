@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 100vh !important;
+  min-height: 100vh !important;
   background-color: #f2f2f2;
   display: flex;
   color: #525252;
@@ -65,7 +65,7 @@ export const Wrapper = styled.div`
   .container__image {
     & img {
       width: auto;
-      height: 100vh;
+      min-height: 100vh;
     }
   }
 

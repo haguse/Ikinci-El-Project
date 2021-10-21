@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Wrapper, Offer } from "./ScReceivedOffers";
+import { Wrapper, Offer, ButtonAccept, ButtonReject } from "./ScReceivedOffers";
 
 const ReceivedOffers = () => {
   const receivedOffers = useSelector((state) => state.account.receivedOffers);
+  console.log(receivedOffers);
 
   return (
     <>
@@ -21,7 +22,12 @@ const ReceivedOffers = () => {
                 </div>
               </div>
             </div>
-            <div className="offer__buttons"></div>
+            {offer.status === "offered" && (
+              <div className="offer__buttons">
+                <ButtonAccept>Onayla</ButtonAccept>
+                <ButtonReject>Reddet</ButtonReject>
+              </div>
+            )}
           </Offer>
         ))}
       </Wrapper>
