@@ -127,8 +127,8 @@ export const offerProduct =
   (id, price, percentage, offerPrice) => (dispatch) => {
     let sendingPrice = 0;
     if (percentage.length > 0)
-      sendingPrice = (parseInt(price) % 100) * parseInt(percentage);
-    else sendingPrice = parseInt(offerPrice);
+      sendingPrice = parseFloat(price / 100) * parseFloat(percentage);
+    else sendingPrice = parseFloat(offerPrice);
     axios
       .post(`${baseUrl}/product/offer/${id}`, {
         offeredPrice: sendingPrice,

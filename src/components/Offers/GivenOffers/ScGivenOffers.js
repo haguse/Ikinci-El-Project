@@ -9,16 +9,26 @@ export const Wrapper = styled.div`
 export const Offer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   &:not(:first-child) {
     margin-top: 1rem;
   }
   width: 100%;
   border: 1px solid #f2f2f2;
   border-radius: 0.2rem;
-  padding: 0.4rem;
+  padding: 0.4rem 1rem;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
 
   .offer__content {
     display: flex;
+
+    @media screen and (max-width: 1000px) {
+      margin-bottom: 1rem;
+    }
 
     &__desc {
       margin-left: 1rem;
@@ -41,7 +51,35 @@ export const Offer = styled.div`
   }
 
   & img {
+    border-radius: 0.4rem;
     width: 78px;
     height: 84px;
   }
+
+  & .offer-accepted {
+    display: flex;
+    align-items: center;
+
+    & p {
+      margin-left: 1rem;
+    }
+  }
+`;
+
+export const ButtonAccept = styled.button`
+  color: white;
+  background-color: #4b9ce2;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
+`;
+
+export const ButtonCancel = styled.button`
+  color: white;
+  background-color: #b1b1b1;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
 `;

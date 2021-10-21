@@ -26,7 +26,9 @@ const ReceivedOffers = () => {
                 <img src={offer.product.imageUrl} alt="" />
               </div>
               <div className="offer__content__desc">
-                <p>{offer.product.description}</p>
+                <p>
+                  {offer.product.brand.title} {offer.product.category.title}
+                </p>
                 <div>
                   Alınan Teklif: <span>{offer.offeredPrice} TL</span>
                 </div>
@@ -42,14 +44,16 @@ const ReceivedOffers = () => {
                 </ButtonReject>
               </div>
             )}
-            {offer.isSold === "sold" && (
-              <p style={{ color: "#B1B1B1" }}>Ürün Satıldı.</p>
+            {offer.isSold === "sold" && offer.status === "offered" && (
+              <p style={{ color: "#B1B1B1" }}>Ürün Satıldı</p>
             )}
             {offer.status === "rejected" && (
               <p style={{ color: "#F77474" }}>Reddedildi</p>
             )}
             {offer.status === "accepted" && (
-              <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
+              <p style={{ color: "#4B9CE2" }}>
+                Onaylandı {`${offer.isSold === "sold" && `(Ürün Satıldı)`}`}
+              </p>
             )}
           </Offer>
         ))}

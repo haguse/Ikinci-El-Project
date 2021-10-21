@@ -69,3 +69,20 @@ export const acceptOffer = (id) => (dispatch) => {
       })
     );
 };
+
+export const cancelOffer = (id) => (dispatch) => {
+  axios
+    .delete(`${baseUrl}/account/cancel-offer/${id}`)
+    .then((res) => {
+      dispatch({
+        type: ACCOUNT.ACCEPT_OFFER_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: ACCOUNT.ACCEPT_OFFER_ERROR,
+        payload: err,
+      })
+    );
+};
