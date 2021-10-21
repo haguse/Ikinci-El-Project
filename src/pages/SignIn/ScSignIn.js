@@ -65,7 +65,7 @@ export const Wrapper = styled.div`
   .container__image {
     & img {
       width: auto;
-      min-height: 100vh;
+      height: 100vh;
     }
   }
 
