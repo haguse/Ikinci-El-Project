@@ -41,12 +41,22 @@ export const filterProductsByCategory = (id) => {
 };
 
 export const getProductById = (id) => (dispatch) => {
+  dispatch({
+    type: PRODUCTS.IS_LOADING_PRODUCT,
+    payload: true,
+  });
   axios
     .get(`${baseUrl}/product/${id}`)
     .then((res) =>
       dispatch({
         type: PRODUCTS.GET_PRODUCT_BY_ID_SUCCESS,
         payload: res.data,
+      })
+    )
+    .then(
+      dispatch({
+        type: PRODUCTS.IS_LOADING_PRODUCT,
+        payload: false,
       })
     )
     .catch((err) =>

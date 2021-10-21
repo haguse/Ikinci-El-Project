@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   productsData: [],
   filteredProducts: [],
   errorMessage: "",
+  isLoading: false,
   product: {},
 };
 
@@ -53,6 +54,11 @@ const productsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         errorMessage: action.payload,
+      };
+    case PRODUCTS.IS_LOADING_PRODUCT:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;
