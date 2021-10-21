@@ -3,6 +3,7 @@ import PRODUCTS from "../constants/productsTypes";
 import baseUrl from "../api";
 
 import { ACCESS_TOKEN_NAME } from "../api";
+import { toast } from "react-toastify";
 const token = localStorage.getItem(ACCESS_TOKEN_NAME);
 
 // Authorization
@@ -19,18 +20,18 @@ axios.interceptors.request.use(
 export const getAllProducts = () => (dispatch) => {
   axios
     .get(`${baseUrl}/product/all`)
-    .then((res) =>
+    .then((res) => {
       dispatch({
         type: PRODUCTS.GET_ALL_PRODUCTS_SUCCESS,
         payload: res.data,
-      })
-    )
-    .catch((err) =>
+      });
+    })
+    .catch((err) => {
       dispatch({
         type: PRODUCTS.GET_ALL_PRODUCTS_ERROR,
         payload: err,
-      })
-    );
+      });
+    });
 };
 
 export const filterProductsByCategory = (id) => {
@@ -75,13 +76,15 @@ export const purchaseProductById = (id) => (dispatch) => {
         type: PRODUCTS.PURCHASE_PRODUCT_BY_ID_SUCCESS,
         payload: res.data,
       });
+      toast.success("Satın Alındı");
     })
-    .catch((err) =>
+    .catch((err) => {
       dispatch({
         type: PRODUCTS.PURCHASE_PRODUCT_BY_ID_ERROR,
         payload: err,
-      })
-    );
+      });
+      toast.error("Satın Alınamadı");
+    });
 };
 
 export const addProduct = (product) => (dispatch) => {
@@ -138,11 +141,13 @@ export const offerProduct =
           type: PRODUCTS.OFFER_PRODUCT_SUCCESS,
           payload: res.data,
         });
+        toast.success("Teklif verildi");
       })
-      .catch((err) =>
+      .catch((err) => {
         dispatch({
           type: PRODUCTS.OFFER_PRODUCT_ERROR,
           payload: err,
-        })
-      );
+        });
+        toast.error("Bu ürüne zaten teklif verdiniz.");
+      });
   };

@@ -11,11 +11,15 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 // import PrivateRoute from "./utils/PrivateRoute";
 import AddProduct from "./pages/AddProduct";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   // const token = localStorage.getItem(ACCESS_TOKEN_NAME);
   return (
     <>
+      <ToastContainer autoClose={2000} />
+
       <Header />
 
       <Switch>

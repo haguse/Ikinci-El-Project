@@ -2,6 +2,7 @@ import axios from "axios";
 import baseUrl from "../api";
 import { ACCESS_TOKEN_NAME } from "../api";
 import { history } from "../_helpers/history";
+import { toast } from "react-toastify";
 
 export const signUp = (data) => {
   axios
@@ -27,6 +28,8 @@ export const signIn = (data) => {
         localStorage.setItem(ACCESS_TOKEN_NAME, res.data.access_token);
         localStorage.setItem("email", data.email);
         history.push("/");
+        toast.success("Giriş yaptınız.");
       }
-    });
+    })
+    .catch(() => toast.error("Emailiniz veya şifreniz hatalı."));
 };

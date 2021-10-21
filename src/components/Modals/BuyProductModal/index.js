@@ -17,6 +17,7 @@ const BuyProductModal = ({ isOpen, closeModal }) => {
 
   const handleBuyProduct = () => {
     dispatch(purchaseProductById(product.id));
+    closeModal();
   };
 
   if (!isOpen) return null;

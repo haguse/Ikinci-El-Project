@@ -279,15 +279,13 @@ const AddProduct = () => {
                     <span>Görsel Seçin</span>
                   </label> */}
                 </DragImage>
-                <input
-                  type="file"
-                  id="file-upload"
-                  // onChange={(e) => setNewProductImage(e.target.files[0])}
-                />
                 <p className="add-file__wrapper__size">
                   PNG ve JPEG Dosya boyutu max. 100kb
                 </p>
               </div>
+            )}
+            {imageUrl?.url?.length > 0 && (
+              <img src={imageUrl.url} width="70" height="70" alt="Product" />
             )}
           </div>
           <Button onClick={handleSubmit} type="submit">

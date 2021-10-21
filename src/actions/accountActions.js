@@ -1,6 +1,7 @@
 import axios from "axios";
 import ACCOUNT from "../constants/accountTypes";
 import baseUrl from "../api";
+import { toast } from "react-toastify";
 
 export const getGivenOffers = () => (dispatch) => {
   axios
@@ -78,6 +79,7 @@ export const cancelOffer = (id) => (dispatch) => {
         type: ACCOUNT.ACCEPT_OFFER_SUCCESS,
         payload: res.data,
       });
+      toast.success("Teklifi iptal ettiniz.");
     })
     .catch((err) =>
       dispatch({

@@ -4,6 +4,7 @@ import { ModalContainer, ButtonOne } from "./ScOfferProductModal";
 import useOutsideClick from "../../../hooks/clickOutsideHook";
 import { useDispatch, useSelector } from "react-redux";
 import { offerProduct } from "../../../actions/productsActions";
+import { toast } from "react-toastify";
 
 const OfferProductModal = ({ isOpen, closeModal }) => {
   const ref = useRef();
@@ -22,6 +23,9 @@ const OfferProductModal = ({ isOpen, closeModal }) => {
       dispatch(
         offerProduct(product.id, product.price, offerPercentage, customOffer)
       );
+      closeModal();
+    } else {
+      toast.warn("Lütfen teklif belirleyin.");
     }
   };
 
