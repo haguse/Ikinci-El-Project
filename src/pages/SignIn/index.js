@@ -38,7 +38,9 @@ const SignIn = () => {
       </div>
       <div className="container__content">
         <div className="container__content__img">
-          <img src={logo} alt="İkini El" />
+          <Link to="/">
+            <img src={logo} alt="İkini El" />
+          </Link>
         </div>
         <div className="sign">
           <div className="sign__texts">

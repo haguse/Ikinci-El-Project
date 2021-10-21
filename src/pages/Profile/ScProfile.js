@@ -32,7 +32,6 @@ export const Wrapper = styled.div`
 
     &__titles {
       display: flex;
-      color: #4b9ce2;
       cursor: pointer;
 
       & p:nth-child(2) {
@@ -41,6 +40,12 @@ export const Wrapper = styled.div`
     }
     &__components {
       margin-top: 1rem;
+    }
+
+    .active {
+      color: #4b9ce2;
+      text-decoration: underline;
+      font-weight: bold;
     }
   }
 `;

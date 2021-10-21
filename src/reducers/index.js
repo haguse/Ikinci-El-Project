@@ -6,6 +6,7 @@ import brandsReducer from "./brandsReducer";
 import colorsReducer from "./colorsReducer";
 import statusReducer from "./statusReducer";
 import accountReducer from "./accountReducer";
+import fileReducer from "./fileReducer";
 
 export default combineReducers({
   products: productsReducer,
@@ -14,4 +15,5 @@ export default combineReducers({
   colors: colorsReducer,
   status: statusReducer,
   account: accountReducer,
+  file: fileReducer,
 });

@@ -12,14 +12,21 @@ import { getAllCategories } from "../../actions/categoriesActions";
 import { getAllBrands } from "../../actions/brandsActions";
 import { getAllColors } from "../../actions/colorsActions";
 import { getAllStatus } from "../../actions/statusActions";
-
 import { addProduct } from "../../actions/productsActions";
+import { history } from "../../_helpers/history";
+import { ACCESS_TOKEN_NAME } from "../../api";
 
-import AddFileIcon from "../../images/Add Product/FileIcon.svg";
+// import AddFileIcon from "../../images/Add Product/FileIcon.svg";
 import Switch from "react-switch";
 
+import ProgressBar from "../../components/AddProduct/ProgressBar";
+
+import DragImage from "../../components/AddProduct/DragImage";
+
 const AddProduct = () => {
-  // console.log(categories);
+  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
+  if (!token) history.push("sign-in");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,6 +40,20 @@ const AddProduct = () => {
   const brands = useSelector((state) => state.brands);
   const colors = useSelector((state) => state.colors);
   const status = useSelector((state) => state.status);
+  const imageUrl = useSelector((state) => state.file.imageUrl);
+
+  const [showProgress, setShowProgress] = useState(false);
+
+  // Upload Image
+  // useEffect(() => {
+  //   const fd = new FormData();
+  //   if (newProductImage !== null) {
+  //     fd.append("file", newProductImage);
+  //     dispatch(uploadFile(fd));
+  //     setShowProgress(true);
+  //     console.log(fd);
+  //   }
+  // }, [newProductImage, dispatch]);
 
   const [newProduct, setNewProduct] = useState({
     price: 0,
@@ -113,8 +134,16 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newProduct);
-    dispatch(addProduct(newProduct));
+    if (newProduct.imageUrl !== "") {
+      dispatch(addProduct(newProduct));
+    }
   };
+
+  // Set Product Image Url
+  useEffect(() => {
+    setNewProduct({ ...newProduct, imageUrl: imageUrl.url });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageUrl]);
 
   return (
     <Container>
@@ -216,17 +245,30 @@ const AddProduct = () => {
         <AddFile>
           <div className="add-file">
             <p className="title">Ürün Görseli</p>
-            <div className="add-file__wrapper">
-              <img src={AddFileIcon} alt="Add File" />
-              <div className="add-file__wrapper__text">
-                <p>Sürükleyip bırakarak yükle</p>
-                <p>veya</p>
+            {showProgress ? (
+              <ProgressBar />
+            ) : (
+              <div className="add-file__wrapper">
+                <DragImage showProgress={() => setShowProgress(true)}>
+                  {/* <img src={AddFileIcon} alt="Add File" />
+                  <div className="add-file__wrapper__text">
+                    <p>Sürükleyip bırakarak yükle</p>
+                    <p>veya</p>
+                  </div>
+                  <label htmlFor="file-upload">
+                    <span>Görsel Seçin</span>
+                  </label> */}
+                </DragImage>
+                <input
+                  type="file"
+                  id="file-upload"
+                  // onChange={(e) => setNewProductImage(e.target.files[0])}
+                />
+                <p className="add-file__wrapper__size">
+                  PNG ve JPEG Dosya boyutu max. 100kb
+                </p>
               </div>
-              <button>Görsel Seçin</button>
-              <p className="add-file__wrapper__size">
-                PNG ve JPEG Dosya boyutu max. 100kb
-              </p>
-            </div>
+            )}
           </div>
           <Button onClick={handleSubmit} type="submit">
             Kaydet

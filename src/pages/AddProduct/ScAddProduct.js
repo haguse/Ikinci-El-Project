@@ -136,13 +136,19 @@ export const AddFile = styled.div`
     border-radius: 1rem;
     padding: 1rem 0;
 
-    & button {
+    & input[type="file"] {
+      display: none;
+    }
+
+    & span {
       color: #b1b1b1;
+      display: inline-block;
       border: none;
       border-radius: 0.8rem;
       padding: 0.5rem 1rem;
       background-color: #f4f4f4;
-      margin-top: 0.5rem;
+      cursor: pointer;
+      margin-top: 1rem;
     }
 
     &__text {
@@ -150,7 +156,7 @@ export const AddFile = styled.div`
     }
 
     &__size {
-      margin-top: 0.5rem;
+      margin-top: 2rem;
       color: #b1b1b1;
       font-size: small;
     }

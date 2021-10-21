@@ -78,8 +78,7 @@ export const addProduct = (product) => (dispatch) => {
   axios
     .post(`${baseUrl}/product/create`, {
       price: product.price,
-      imageUrl:
-        "https://nohftzveajkz.merlincdn.net/i/m/005/0057471_erkek-kapusonlu-kanguru-cep-ottoman-haki-sweat.jpeg",
+      imageUrl: product.imageUrl,
       title: product.title,
       status: {
         title: product.status.title,

@@ -6,16 +6,34 @@ import { getReceivedOffers } from "../../actions/accountActions";
 import { useDispatch } from "react-redux";
 import GivenOffers from "../../components/Offers/GivenOffers";
 import ReceivedOffers from "../../components/Offers/ReceivedOffers";
+import { ACCESS_TOKEN_NAME } from "../../api";
+import { history } from "../../_helpers/history";
 
 const Profile = () => {
+  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
+  if (!token) history.push("sign-in");
+
   const email = localStorage.getItem("email");
-  const [currentOfferComponent, setCurrentOfferComponent] = useState("given");
+  const [currentOfferComponent, setCurrentOfferComponent] =
+    useState("received");
+  const [activeOfferPage, setActiveOfferPage] = useState("received");
+
+  const handleClickGiven = () => {
+    setCurrentOfferComponent("given");
+    setActiveOfferPage("given");
+  };
+
+  const handleClickReceived = () => {
+    setCurrentOfferComponent("received");
+    setActiveOfferPage("received");
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getGivenOffers());
     dispatch(getReceivedOffers());
   }, [dispatch]);
+
   return (
     <Wrapper>
       <div className="profile__info">
@@ -26,18 +44,24 @@ const Profile = () => {
       </div>
       <div className="offers">
         <div className="offers__titles">
-          <p onClick={() => setCurrentOfferComponent("given")}>
+          <p
+            onClick={handleClickReceived}
+            className={activeOfferPage === "received" && `active`}
+          >
             Teklif Aldıklarım
           </p>
-          <p onClick={() => setCurrentOfferComponent("received")}>
+          <p
+            onClick={handleClickGiven}
+            className={activeOfferPage === "given" && `active`}
+          >
             Teklif Verdiklerim
           </p>
         </div>
         <div className="offers__components">
           {currentOfferComponent === "given" ? (
-            <ReceivedOffers />
-          ) : (
             <GivenOffers />
+          ) : (
+            <ReceivedOffers />
           )}
         </div>
       </div>
