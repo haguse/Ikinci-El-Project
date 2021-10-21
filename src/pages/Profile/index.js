@@ -46,13 +46,13 @@ const Profile = () => {
         <div className="offers__titles">
           <p
             onClick={handleClickReceived}
-            className={activeOfferPage === "received" && `active`}
+            className={activeOfferPage === "received" ? `active` : ""}
           >
             Teklif Aldıklarım
           </p>
           <p
             onClick={handleClickGiven}
-            className={activeOfferPage === "given" && `active`}
+            className={activeOfferPage === "given" ? "active" : ""}
           >
             Teklif Verdiklerim
           </p>

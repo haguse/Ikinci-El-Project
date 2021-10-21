@@ -15,13 +15,10 @@ import { getAllStatus } from "../../actions/statusActions";
 import { addProduct } from "../../actions/productsActions";
 import { history } from "../../_helpers/history";
 import { ACCESS_TOKEN_NAME } from "../../api";
-
-// import AddFileIcon from "../../images/Add Product/FileIcon.svg";
 import Switch from "react-switch";
-
 import ProgressBar from "../../components/AddProduct/ProgressBar";
-
 import DragImage from "../../components/AddProduct/DragImage";
+import Select from "react-select";
 
 const AddProduct = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
@@ -41,6 +38,12 @@ const AddProduct = () => {
   const colors = useSelector((state) => state.colors);
   const status = useSelector((state) => state.status);
   const imageUrl = useSelector((state) => state.file.imageUrl);
+
+  // States for selects
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
   const [showProgress, setShowProgress] = useState(false);
 
@@ -85,41 +88,45 @@ const AddProduct = () => {
   };
 
   const handleCategory = (category) => {
+    setSelectedCategory(category);
     setNewProduct({
       ...newProduct,
       category: {
-        title: category.title,
-        id: category.id,
+        id: category.value,
+        title: category.label,
       },
     });
   };
 
   const handleBrand = (brand) => {
+    setSelectedBrand(brand);
     setNewProduct({
       ...newProduct,
       brand: {
-        title: brand.title,
-        id: brand.id,
+        id: brand.value,
+        title: brand.label,
       },
     });
   };
 
   const handleColor = (color) => {
+    setSelectedColor(color);
     setNewProduct({
       ...newProduct,
       color: {
-        title: color.title,
-        id: color.id,
+        id: color.value,
+        title: color.label,
       },
     });
   };
 
   const handleStatus = (status) => {
+    setSelectedStatus(status);
     setNewProduct({
       ...newProduct,
       status: {
-        title: status.title,
-        id: status.id,
+        id: status.value,
+        title: status.label,
       },
     });
   };
@@ -144,6 +151,22 @@ const AddProduct = () => {
     setNewProduct({ ...newProduct, imageUrl: imageUrl.url });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageUrl]);
+
+  let categorySelect = categories.categoriesData.map((category) => {
+    return { value: category.id, label: category.title };
+  });
+
+  let brandsSelect = brands.brandsData.map((brand) => {
+    return { value: brand.id, label: brand.title };
+  });
+
+  let colorsSelect = colors.colorsData.map((color) => {
+    return { value: color.id, label: color.title };
+  });
+
+  let statusSelect = status.statusData.map((status) => {
+    return { value: status.id, label: status.title };
+  });
 
   return (
     <Container>
@@ -172,52 +195,49 @@ const AddProduct = () => {
             <div className="selects">
               <div className="select">
                 <label htmlFor="">Kategori</label>
-                <select className="" name="" id="">
-                  {categories.categoriesData.map((category) => (
-                    <option
-                      onClick={() => handleCategory(category)}
-                      key={category.id}
-                      value={category.id}
-                    >
-                      {category.title}
-                    </option>
-                  ))}
-                </select>
+                <div className="react-select">
+                  <Select
+                    value={selectedCategory}
+                    onChange={handleCategory}
+                    options={categorySelect}
+                    placeholder="Kategori seç"
+                  />
+                </div>
               </div>
               <div className="select">
                 <label htmlFor="">Marka</label>
-                <select name="brand.title" id="">
-                  {brands.brandsData.map((brand) => (
-                    <option onClick={() => handleBrand(brand)} key={brand.id}>
-                      {brand.title}
-                    </option>
-                  ))}
-                </select>
+                <div className="react-select">
+                  <Select
+                    value={selectedBrand}
+                    onChange={handleBrand}
+                    options={brandsSelect}
+                    placeholder="Marka seç"
+                  />
+                </div>
               </div>
             </div>
             <div className="selects">
               <div className="select">
                 <label htmlFor="">Renk</label>
-                <select name="" id="">
-                  {colors.colorsData.map((color) => (
-                    <option onClick={() => handleColor(color)} key={color.id}>
-                      {color.title}
-                    </option>
-                  ))}
-                </select>
+                <div className="react-select">
+                  <Select
+                    value={selectedColor}
+                    onChange={handleColor}
+                    options={colorsSelect}
+                    placeholder="Renk seç"
+                  />
+                </div>
               </div>
               <div className="select">
                 <label htmlFor="">Kullanım Durumu</label>
-                <select name="" id="">
-                  {status.statusData.map((status) => (
-                    <option
-                      onClick={() => handleStatus(status)}
-                      key={status.id}
-                    >
-                      {status.title}
-                    </option>
-                  ))}
-                </select>
+                <div className="react-select">
+                  <Select
+                    value={selectedStatus}
+                    onChange={handleStatus}
+                    options={statusSelect}
+                    placeholder="Kullanım durumu seç"
+                  />
+                </div>
               </div>
             </div>
             <label htmlFor="">Fiyat</label>

@@ -73,15 +73,10 @@ export const Detail = styled.div`
       display: flex;
       flex-direction: column;
       width: 100%;
+    }
 
-      select {
-        width: 100%;
-        margin-top: 0.4rem;
-        border: none;
-        padding: 0.8rem 0.8rem;
-        background-color: #f4f4f4;
-        border-radius: 0.4rem;
-      }
+    .react-select {
+      margin-top: 0.4rem;
     }
 
     @media only screen and (min-width: 1000px) {
