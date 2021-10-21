@@ -16,6 +16,14 @@ const categoriesReducer = (state = INITIAL_STATE, action) => {
       return { ...state, receivedOffers: action.payload };
     case ACCOUNT.GET_RECEIVED_OFFERS_ERROR:
       return { ...state, errorMessage: action.payload };
+    case ACCOUNT.REJECT_OFFER_SUCCESS:
+      return { ...state };
+    case ACCOUNT.REJECT_OFFER_ERROR:
+      return { ...state, errorMessage: action.payload };
+    case ACCOUNT.ACCEPT_OFFER_SUCCESS:
+      return { ...state };
+    case ACCOUNT.ACCEPT_OFFER_ERROR:
+      return { ...state, errorMessage: action.payload };
     default:
       return state;
   }

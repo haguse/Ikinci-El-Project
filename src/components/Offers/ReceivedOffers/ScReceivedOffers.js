@@ -67,6 +67,7 @@ export const ButtonAccept = styled.button`
   border: none;
   border-radius: 0.3rem;
   padding: 0.4rem 1.2rem;
+  cursor: pointer;
 `;
 
 export const ButtonReject = styled.button`
@@ -75,4 +76,5 @@ export const ButtonReject = styled.button`
   border: none;
   border-radius: 0.3rem;
   padding: 0.4rem 1.2rem;
+  cursor: pointer;
 `;

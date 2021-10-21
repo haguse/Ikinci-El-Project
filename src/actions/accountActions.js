@@ -35,3 +35,37 @@ export const getReceivedOffers = () => (dispatch) => {
       })
     );
 };
+
+export const rejectOffer = (id) => (dispatch) => {
+  axios
+    .post(`${baseUrl}/account/reject-offer/${id}`)
+    .then((res) => {
+      dispatch({
+        type: ACCOUNT.REJECT_OFFER_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: ACCOUNT.REJECT_OFFER_ERROR,
+        payload: err,
+      })
+    );
+};
+
+export const acceptOffer = (id) => (dispatch) => {
+  axios
+    .put(`${baseUrl}/account/accept-offer/${id}`)
+    .then((res) => {
+      dispatch({
+        type: ACCOUNT.ACCEPT_OFFER_SUCCESS,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch({
+        type: ACCOUNT.ACCEPT_OFFER_ERROR,
+        payload: err,
+      })
+    );
+};
