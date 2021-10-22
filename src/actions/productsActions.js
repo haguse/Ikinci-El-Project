@@ -48,18 +48,17 @@ export const getProductById = (id) => (dispatch) => {
   });
   axios
     .get(`${baseUrl}/product/${id}`)
-    .then((res) =>
+    .then((res) => {
       dispatch({
         type: PRODUCTS.GET_PRODUCT_BY_ID_SUCCESS,
         payload: res.data,
-      })
-    )
-    .then(
+      });
       dispatch({
         type: PRODUCTS.IS_LOADING_PRODUCT,
         payload: false,
-      })
-    )
+      });
+    })
+
     .catch((err) =>
       dispatch({
         type: PRODUCTS.GET_PRODUCT_BY_ID_ERROR,
