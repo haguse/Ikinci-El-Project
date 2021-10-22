@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Wrapper } from "./ScCategories";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllCategories } from "../../actions/categoriesActions";
@@ -15,6 +15,7 @@ const Categories = () => {
   const dispatch = useDispatch();
 
   // const [categoryId, setCategoryId] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   useEffect(() => {
     dispatch(getAllCategories());
@@ -26,29 +27,31 @@ const Categories = () => {
       dispatch(getAllProducts());
     }
     dispatch(filterProductsByCategory(id));
+    setSelectedCategory(id);
   };
 
   return (
     <Wrapper className="categories">
       <ul>
-        <li>
-          <NavLink
-            onClick={() => filterProducts(null)}
+        <li className={`${selectedCategory === "all" && "active"} `}>
+          <Link
+            onClick={() => {
+              filterProducts(null);
+              setSelectedCategory("all");
+            }}
             to="#"
-            activeClassName="selected"
           >
             HEPSİ
-          </NavLink>
+          </Link>
         </li>
         {categories.categoriesData.map((category) => (
-          <li key={category.id}>
-            <NavLink
-              onClick={() => filterProducts(category.id)}
-              to="#"
-              activeClassName="selected"
-            >
+          <li
+            className={`${selectedCategory === category.id && "active"}`}
+            key={category.id}
+          >
+            <Link onClick={() => filterProducts(category.id)} to="#">
               {category.title.toUpperCase()}
-            </NavLink>
+            </Link>
           </li>
         ))}
       </ul>

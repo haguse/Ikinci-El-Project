@@ -134,7 +134,7 @@ export const offerProduct =
     else sendingPrice = parseFloat(offerPrice);
     axios
       .post(`${baseUrl}/product/offer/${id}`, {
-        offeredPrice: sendingPrice,
+        offeredPrice: Math.round(sendingPrice),
       })
       .then((res) => {
         dispatch({

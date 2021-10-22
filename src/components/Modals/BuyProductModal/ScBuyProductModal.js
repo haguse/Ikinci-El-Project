@@ -9,6 +9,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(125, 182, 231, 0.4);
+  color: #525252;
 
   .modal {
     margin: auto !important;

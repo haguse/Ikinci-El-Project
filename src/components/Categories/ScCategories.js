@@ -16,4 +16,10 @@ export const Wrapper = styled.div`
       }
     }
   }
+
+  .active {
+    color: #4b9ce2;
+    text-decoration: underline;
+    font-weight: bold;
+  }
 `;
