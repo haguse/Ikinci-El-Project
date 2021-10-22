@@ -19,6 +19,7 @@ import Switch from "react-switch";
 import ProgressBar from "../../components/AddProduct/ProgressBar";
 import DragImage from "../../components/AddProduct/DragImage";
 import Select from "react-select";
+import ProductImage from "../../components/AddProduct/ProductImage";
 
 const AddProduct = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
@@ -46,17 +47,6 @@ const AddProduct = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
 
   const [showProgress, setShowProgress] = useState(false);
-
-  // Upload Image
-  // useEffect(() => {
-  //   const fd = new FormData();
-  //   if (newProductImage !== null) {
-  //     fd.append("file", newProductImage);
-  //     dispatch(uploadFile(fd));
-  //     setShowProgress(true);
-  //     console.log(fd);
-  //   }
-  // }, [newProductImage, dispatch]);
 
   const [newProduct, setNewProduct] = useState({
     price: 0,
@@ -265,27 +255,17 @@ const AddProduct = () => {
         <AddFile>
           <div className="add-file">
             <p className="title">Ürün Görseli</p>
-            {showProgress ? (
-              <ProgressBar />
+            {showProgress && <ProgressBar />}
+
+            {imageUrl?.url?.length > 0 ? (
+              <ProductImage hideProgress={() => setShowProgress(false)} />
             ) : (
               <div className="add-file__wrapper">
-                <DragImage showProgress={() => setShowProgress(true)}>
-                  {/* <img src={AddFileIcon} alt="Add File" />
-                  <div className="add-file__wrapper__text">
-                    <p>Sürükleyip bırakarak yükle</p>
-                    <p>veya</p>
-                  </div>
-                  <label htmlFor="file-upload">
-                    <span>Görsel Seçin</span>
-                  </label> */}
-                </DragImage>
+                <DragImage showProgress={() => setShowProgress(true)} />
                 <p className="add-file__wrapper__size">
                   PNG ve JPEG Dosya boyutu max. 100kb
                 </p>
               </div>
-            )}
-            {imageUrl?.url?.length > 0 && (
-              <img src={imageUrl.url} width="70" height="70" alt="Product" />
             )}
           </div>
           <Button onClick={handleSubmit} type="submit">
