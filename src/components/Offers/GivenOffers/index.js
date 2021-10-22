@@ -35,6 +35,7 @@ const GivenOffers = () => {
                 </div>
               </div>
             </div>
+
             {offer.isSold !== "sold" && offer.status === "offered" && (
               <div className="offer__buttons">
                 <ButtonCancel onClick={() => handleCancelOffer(offer.id)}>
@@ -42,21 +43,27 @@ const GivenOffers = () => {
                 </ButtonCancel>
               </div>
             )}
-            {/* {offer.isSold === "sold" && (
-              <p style={{ color: "#B1B1B1" }}>Ürün Satıldı.</p>
-            )} */}
+
             {offer.status === "rejected" && (
-              <p style={{ color: "#F77474" }}>Reddedildi</p>
+              <div className="offer-rejected">
+                <p style={{ color: "#F77474" }}>Reddedildi</p>
+                <span className="isSold">{`${
+                  offer.isSold === "sold" && `(Ürün Satıldı)`
+                }`}</span>
+              </div>
             )}
-            {offer.status === "accepted" && offer.isSold !== "sold" && (
-              <>
-                <div className="offer-accepted">
+
+            {offer.status === "accepted" && (
+              <div className="offer-accepted">
+                <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
+                {offer.isSold === "sold" ? (
+                  <span className="isSold">(Ürün Satıldı)</span>
+                ) : (
                   <ButtonAccept onClick={() => handleBuy(offer.product.id)}>
                     Satın Al
                   </ButtonAccept>
-                  <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
-                </div>
-              </>
+                )}
+              </div>
             )}
           </Offer>
         ))}

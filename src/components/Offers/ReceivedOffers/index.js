@@ -45,15 +45,23 @@ const ReceivedOffers = () => {
               </div>
             )}
             {offer.isSold === "sold" && offer.status === "offered" && (
-              <p style={{ color: "#B1B1B1" }}>Ürün Satıldı</p>
+              <p className="isSold">Ürün Satıldı</p>
             )}
             {offer.status === "rejected" && (
-              <p style={{ color: "#F77474" }}>Reddedildi</p>
+              <div className="offer-rejected">
+                <p style={{ color: "#F77474" }}>Reddedildi</p>
+                <span className="isSold">{`${
+                  offer.isSold === "sold" && `(Ürün Satıldı)`
+                }`}</span>
+              </div>
             )}
             {offer.status === "accepted" && (
-              <p style={{ color: "#4B9CE2" }}>
-                Onaylandı {`${offer.isSold === "sold" && `(Ürün Satıldı)`}`}
-              </p>
+              <div className="offer-accepted">
+                <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
+                <span className="isSold">
+                  {`${offer.isSold === "sold" && `(Ürün Satıldı)`}`}
+                </span>
+              </div>
             )}
           </Offer>
         ))}

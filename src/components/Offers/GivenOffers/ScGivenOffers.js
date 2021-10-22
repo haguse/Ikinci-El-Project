@@ -64,6 +64,21 @@ export const Offer = styled.div`
       margin-left: 1rem;
     }
   }
+
+  & .offer-rejected {
+    display: flex;
+    align-items: center;
+
+    & p {
+      margin-left: 1rem;
+    }
+  }
+
+  .isSold {
+    color: "#B1B1B1";
+    display: inline-block;
+    margin-left: 0.4rem;
+  }
 `;
 
 export const ButtonAccept = styled.button`
