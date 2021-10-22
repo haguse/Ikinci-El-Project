@@ -33,3 +33,9 @@ export const uploadFile = (data) => (dispatch) => {
       })
     );
 };
+
+export const resetImageUrl = () => (dispatch) => {
+  dispatch({
+    type: FILE.RESET_PRODUCT_IMAGE_URL,
+  });
+};

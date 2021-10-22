@@ -14,6 +14,13 @@ const categoriesReducer = (state = INITIAL_STATE, action) => {
       return { ...state, errorMessage: action.payload };
     case FILE.UPLOADING_PROGRESS:
       return { ...state, progress: action.payload };
+    case FILE.RESET_PRODUCT_IMAGE_URL:
+      return {
+        ...state,
+        imageUrl: {
+          url: "",
+        },
+      };
     default:
       return state;
   }

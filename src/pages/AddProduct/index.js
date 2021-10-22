@@ -20,6 +20,7 @@ import ProgressBar from "../../components/AddProduct/ProgressBar";
 import DragImage from "../../components/AddProduct/DragImage";
 import Select from "react-select";
 import ProductImage from "../../components/AddProduct/ProductImage";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
@@ -131,8 +132,10 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newProduct);
-    if (newProduct.imageUrl !== "") {
+    if (typeof newProduct.imageUrl === "string") {
       dispatch(addProduct(newProduct));
+    } else {
+      toast.warning("Resim Eklenmedi veya Hatalı");
     }
   };
 
@@ -178,7 +181,7 @@ const AddProduct = () => {
               id=""
               cols="30"
               rows="4"
-              placeholder="Ürün açıklamasını girin"
+              placeholder="Ürün açıklamasını girin (En fazla 100000 karakter)"
               name="description"
               onChange={handleInput}
             ></textarea>

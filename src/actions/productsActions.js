@@ -2,6 +2,7 @@ import axios from "axios";
 import PRODUCTS from "../constants/productsTypes";
 import baseUrl from "../api";
 import { toast } from "react-toastify";
+import { history } from "../_helpers/history";
 
 export const getAllProducts = () => (dispatch) => {
   dispatch({
@@ -105,18 +106,21 @@ export const addProduct = (product) => (dispatch) => {
       description: product.description,
       isOfferable: product.isOfferable,
     })
-    .then((res) =>
+    .then((res) => {
       dispatch({
         type: PRODUCTS.ADD_PRODUCT_SUCCESS,
         payload: res.data,
-      })
-    )
-    .catch((err) =>
+      });
+      toast.success("Ürün Eklendi");
+      history.push("/");
+    })
+    .catch((err) => {
       dispatch({
         type: PRODUCTS.ADD_PRODUCT_ERROR,
         payload: err,
-      })
-    );
+      });
+      toast.success("Lütfen tüm alanları doldurun");
+    });
 };
 
 export const offerProduct =
