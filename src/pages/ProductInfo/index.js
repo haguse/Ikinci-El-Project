@@ -20,7 +20,7 @@ const ProductInfo = () => {
   }, [id, dispatch]);
 
   const product = useSelector((state) => state.products.product);
-  const isLoading = useSelector((state) => state.products.isLoading);
+  const isLoading = useSelector((state) => state.products.isLoadingProduct);
   console.log(isLoading);
 
   if (typeof product.imageUrl === "string") {

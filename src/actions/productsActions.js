@@ -1,29 +1,23 @@
 import axios from "axios";
 import PRODUCTS from "../constants/productsTypes";
 import baseUrl from "../api";
-
-import { ACCESS_TOKEN_NAME } from "../api";
 import { toast } from "react-toastify";
-const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-
-// Authorization
-axios.interceptors.request.use(
-  (config) => {
-    config.headers.authorization = `Bearer ${token}`;
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
 
 export const getAllProducts = () => (dispatch) => {
+  dispatch({
+    type: PRODUCTS.IS_LOADING_PRODUCTS,
+    payload: true,
+  });
   axios
     .get(`${baseUrl}/product/all`)
     .then((res) => {
       dispatch({
         type: PRODUCTS.GET_ALL_PRODUCTS_SUCCESS,
         payload: res.data,
+      });
+      dispatch({
+        type: PRODUCTS.IS_LOADING_PRODUCTS,
+        payload: false,
       });
     })
     .catch((err) => {
@@ -82,7 +76,7 @@ export const purchaseProductById = (id) => (dispatch) => {
         type: PRODUCTS.PURCHASE_PRODUCT_BY_ID_ERROR,
         payload: err,
       });
-      toast.error("Satın Alınamadı");
+      toast.error("Kendi Ürününüzü Satın Alamazsınız");
     });
 };
 

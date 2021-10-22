@@ -2,9 +2,10 @@ import PRODUCTS from "../constants/productsTypes";
 
 const INITIAL_STATE = {
   productsData: [],
+  isLoadingProducts: false,
   filteredProducts: [],
   errorMessage: "",
-  isLoading: false,
+  isLoadingProduct: false,
   product: {},
 };
 
@@ -18,6 +19,11 @@ const productsReducer = (state = INITIAL_STATE, action) => {
       };
     case PRODUCTS.GET_ALL_PRODUCTS_ERROR:
       return { ...state, errorMessage: action.payload };
+    case PRODUCTS.IS_LOADING_PRODUCTS:
+      return {
+        ...state,
+        isLoadingProduct: action.payload,
+      };
     case PRODUCTS.GET_PRODUCTS_BY_CATEGORY:
       return {
         ...state,
@@ -58,7 +64,7 @@ const productsReducer = (state = INITIAL_STATE, action) => {
     case PRODUCTS.IS_LOADING_PRODUCT:
       return {
         ...state,
-        isLoading: action.payload,
+        isLoadingProduct: action.payload,
       };
     default:
       return state;
