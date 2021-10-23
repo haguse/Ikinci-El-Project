@@ -9,11 +9,9 @@ import { history } from "../../_helpers/history";
 import { useLocation } from "react-router";
 import { toast } from "react-toastify";
 import { deleteTokenCookie } from "../../api";
-import { getCookie } from "../../api";
 
 const Header = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-  console.log("cookie ->", getCookie("Bearer"));
 
   // eslint-disable-next-line no-unused-vars
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -28,7 +26,6 @@ const Header = () => {
     history.push("/");
     toast.success("Çıkış yaptınız.");
   };
-
   if (location.pathname === "/sign-up" || location.pathname === "/sign-in")
     return null;
   else

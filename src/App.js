@@ -26,7 +26,12 @@ function App() {
         <PrivateRoute path="/profile">
           <Profile />
         </PrivateRoute>
-        <Route exact path="/product/:id" component={ProductInfo} />
+        <Route
+          exact
+          path="/products/:category/:brand/:id"
+          component={ProductInfo}
+        />
+        <Route exact path="/products/:category/" component={Home} />
         <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/" component={Home} />

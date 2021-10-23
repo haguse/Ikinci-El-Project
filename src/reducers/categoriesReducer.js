@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   categoriesData: [],
   categoryData: [],
   errorMessage: "",
+  selectedCategory: "",
 };
 
 const categoriesReducer = (state = INITIAL_STATE, action) => {

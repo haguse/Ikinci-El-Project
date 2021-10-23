@@ -29,13 +29,6 @@ export const getAllProducts = () => (dispatch) => {
     });
 };
 
-export const filterProductsByCategory = (id) => {
-  return {
-    type: PRODUCTS.GET_PRODUCTS_BY_CATEGORY,
-    payload: id,
-  };
-};
-
 export const getProductById = (id) => (dispatch) => {
   dispatch({
     type: PRODUCTS.IS_LOADING_PRODUCT,
