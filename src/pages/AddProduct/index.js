@@ -13,8 +13,6 @@ import { getAllBrands } from "../../actions/brandsActions";
 import { getAllColors } from "../../actions/colorsActions";
 import { getAllStatus } from "../../actions/statusActions";
 import { addProduct } from "../../actions/productsActions";
-import { history } from "../../_helpers/history";
-import { ACCESS_TOKEN_NAME } from "../../api";
 import Switch from "react-switch";
 import ProgressBar from "../../components/AddProduct/ProgressBar";
 import DragImage from "../../components/AddProduct/DragImage";
@@ -163,12 +161,14 @@ const AddProduct = () => {
       <Wrapper>
         <Detail>
           <p>Ürün Detayları</p>
-          <form>
+          <form noValidate>
             <label htmlFor="">Ürün Adı</label>
             <input
               className="product__name"
               type="text"
               placeholder="Örnek: iPhone 12 Pro Max"
+              minLength="1"
+              maxLength="100"
               name="title"
               onChange={handleInput}
             />
@@ -178,6 +178,8 @@ const AddProduct = () => {
               id=""
               cols="30"
               rows="4"
+              minLength="1"
+              maxLength="500"
               placeholder="Ürün açıklamasını girin (En fazla 100000 karakter)"
               name="description"
               onChange={handleInput}
@@ -233,7 +235,8 @@ const AddProduct = () => {
             <label htmlFor="">Fiyat</label>
             <input
               className="price"
-              type="text"
+              type="number"
+              minLength="1"
               name="price"
               id=""
               placeholder="TL"

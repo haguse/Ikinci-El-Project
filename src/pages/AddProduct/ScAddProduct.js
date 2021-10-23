@@ -51,6 +51,17 @@ export const Detail = styled.div`
       border-radius: 0.2rem;
       padding: 0.8rem 0 0.8rem 0.8rem;
     }
+
+    /* Delete Number Input Arrows */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
     textarea {
       margin-top: 0.5rem;
       background-color: #f4f4f4;

@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./components/Header";
-// import { ACCESS_TOKEN_NAME } from "./api";
 import { Route, Switch } from "react-router";
 import SignIn from "./pages/SignIn";
 import NotFound404Page from "./pages/NotFound404";
@@ -14,7 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  // const token = localStorage.getItem(ACCESS_TOKEN_NAME);
   return (
     <>
       <ToastContainer autoClose={2000} />

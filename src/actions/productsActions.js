@@ -119,7 +119,7 @@ export const addProduct = (product) => (dispatch) => {
         type: PRODUCTS.ADD_PRODUCT_ERROR,
         payload: err,
       });
-      toast.success("Lütfen tüm alanları doldurun");
+      toast.warning("Lütfen tüm alanları doldurun");
     });
 };
 
