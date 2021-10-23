@@ -37,7 +37,7 @@ const SignUp = () => {
             <p>Fırsatlardan yararlanmak için üye ol!</p>
           </div>
           <div className="sign__form">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} noValidate>
               <div className="sign__form__item">
                 <label htmlFor="">Email</label>
                 <input
@@ -53,6 +53,7 @@ const SignUp = () => {
                 <input
                   name="password"
                   type="password"
+                  minLength="8"
                   placeholder="*****"
                   onChange={handleInput}
                   value={user.password}

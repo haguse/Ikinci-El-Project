@@ -56,7 +56,32 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1270px) {
+  @media only screen and (max-width: 1450px) {
+    .sign {
+      width: 70% !important;
+    }
+    .container__image {
+      & img {
+        width: 550px !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .container__image {
+      & img {
+        width: 500px !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .sign {
+      width: 80% !important;
+    }
+  }
+
+  @media only screen and (max-width: 1060px) {
     .container__image {
       display: none;
     }
@@ -123,6 +148,26 @@ export const Wrapper = styled.div`
           background-color: #f4f4f4;
           border: none;
           border-radius: 0.4rem;
+        }
+
+        & [type="email"]:invalid {
+          color: #f77474;
+          background-color: #fff2f2;
+          border: #f77474;
+        }
+        & [type="email"]:valid {
+          background-color: #f0f8ff;
+          border: #4b9ce2;
+        }
+
+        & [type="password"]:invalid {
+          color: #f77474;
+          background-color: #fff2f2;
+          border: #f77474;
+        }
+        & [type="password"]:valid {
+          background-color: #f0f8ff;
+          border: #4b9ce2;
         }
       }
 

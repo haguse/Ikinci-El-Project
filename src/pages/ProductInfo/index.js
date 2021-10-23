@@ -7,8 +7,11 @@ import { getProductById } from "../../actions/productsActions";
 import BuyProductModal from "../../components/Modals/BuyProductModal";
 import OfferProductModal from "../../components/Modals/OfferProductModal";
 import Loading from "../../components/Spinner";
+import { ACCESS_TOKEN_NAME } from "../../api";
+import { toast } from "react-toastify";
 
 const ProductInfo = () => {
+  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [showBuyModal, setShowBuyModal] = useState(false);
@@ -71,11 +74,22 @@ const ProductInfo = () => {
                 </div>
               ) : (
                 <div className="product__content__button">
-                  <ButtonOne onClick={() => setShowBuyModal(true)}>
+                  <ButtonOne
+                    onClick={() => {
+                      if (token) setShowBuyModal(true);
+                      else toast.warn("Lütfen giriş yapın.");
+                    }}
+                  >
                     Satın Al
                   </ButtonOne>
                   {product.isOfferable && (
-                    <ButtonTwo onClick={() => setShowOfferModal(true)}>
+                    <ButtonTwo
+                      onClick={() => {
+                        if (token) {
+                          setShowOfferModal(true);
+                        } else toast.warn("Lütfen giriş yapın.");
+                      }}
+                    >
                       Teklif Ver
                     </ButtonTwo>
                   )}
