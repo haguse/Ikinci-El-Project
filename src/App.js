@@ -1,5 +1,4 @@
 import React from "react";
-// import GlobalSwitch from "./routes/GlobalSwitch";
 import Header from "./components/Header";
 // import { ACCESS_TOKEN_NAME } from "./api";
 import { Route, Switch } from "react-router";
@@ -9,7 +8,7 @@ import ProductInfo from "./pages/ProductInfo";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
-// import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 import AddProduct from "./pages/AddProduct";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -23,17 +22,16 @@ function App() {
       <Header />
 
       <Switch>
-        {/* <PrivateRoute path="/home">
-          <Home />
-        </PrivateRoute> */}
-
+        <PrivateRoute path="/add-product">
+          <AddProduct />
+        </PrivateRoute>
+        <PrivateRoute path="/profile">
+          <Profile />
+        </PrivateRoute>
         <Route exact path="/product/:id" component={ProductInfo} />
-        <Route exact path="/profile" component={Profile} />
         <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/sign-up" component={SignUp} />
-        <Route exact path="/add-product" component={AddProduct} />
         <Route exact path="/" component={Home} />
-
         <Route exact path="*" component={NotFound404Page} />
       </Switch>
     </>

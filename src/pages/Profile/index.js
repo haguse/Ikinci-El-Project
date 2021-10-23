@@ -6,13 +6,8 @@ import { getReceivedOffers } from "../../actions/accountActions";
 import { useDispatch } from "react-redux";
 import GivenOffers from "../../components/Offers/GivenOffers";
 import ReceivedOffers from "../../components/Offers/ReceivedOffers";
-import { ACCESS_TOKEN_NAME } from "../../api";
-import { history } from "../../_helpers/history";
 
 const Profile = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-  if (!token) history.push("sign-in");
-
   const email = localStorage.getItem("email");
   const [currentOfferComponent, setCurrentOfferComponent] =
     useState("received");

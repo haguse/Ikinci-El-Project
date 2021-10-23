@@ -23,9 +23,6 @@ import ProductImage from "../../components/AddProduct/ProductImage";
 import { toast } from "react-toastify";
 
 const AddProduct = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-  if (!token) history.push("sign-in");
-
   const dispatch = useDispatch();
 
   useEffect(() => {
