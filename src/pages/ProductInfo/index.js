@@ -3,12 +3,14 @@ import { useParams } from "react-router";
 import { Wrapper, ButtonOne, ButtonTwo } from "./ScProductInfo";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../actions/productsActions";
-// import NotFound404 from "../NotFound404";
 import BuyProductModal from "../../components/Modals/BuyProductModal";
 import OfferProductModal from "../../components/Modals/OfferProductModal";
 import Loading from "../../components/Spinner";
 import { ACCESS_TOKEN_NAME } from "../../api";
 import { toast } from "react-toastify";
+import { getGivenOffers } from "../../actions/accountActions";
+import { isProductOffered } from "../../actions/productsActions";
+import { cancelOffer } from "../../actions/accountActions";
 
 const ProductInfo = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
@@ -20,11 +22,36 @@ const ProductInfo = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getProductById(id));
+    dispatch(getGivenOffers());
   }, [id, dispatch]);
 
   const product = useSelector((state) => state.products.product);
   const isLoading = useSelector((state) => state.products.isLoadingProduct);
+  const givenOffers = useSelector((state) => state.account.givenOffers);
+  const isOffered = useSelector((state) => state.products.isProductOffered);
   console.log(isLoading);
+
+  console.log(product);
+  console.log({ givenOffers });
+
+  if (givenOffers?.length > 0) {
+    const offer = givenOffers.filter(
+      (offer) => offer.product.id === product.id
+    );
+    if (offer[0]?.product?.id) {
+      dispatch(isProductOffered(true));
+      var offerId = offer[0].id;
+    } else {
+      dispatch(isProductOffered(false));
+    }
+  }
+
+  const handleButtonOffer = () => {
+    if (token) {
+      if (isOffered) dispatch(cancelOffer(offerId));
+      else setShowOfferModal(true);
+    } else toast.warn("Lütfen giriş yapın.");
+  };
 
   if (typeof product.imageUrl === "string") {
     if (isLoading) {
@@ -83,14 +110,8 @@ const ProductInfo = () => {
                     Satın Al
                   </ButtonOne>
                   {product.isOfferable && (
-                    <ButtonTwo
-                      onClick={() => {
-                        if (token) {
-                          setShowOfferModal(true);
-                        } else toast.warn("Lütfen giriş yapın.");
-                      }}
-                    >
-                      Teklif Ver
+                    <ButtonTwo onClick={() => handleButtonOffer()}>
+                      {isOffered ? "Teklifi Geri Çek" : "Teklif Ver"}
                     </ButtonTwo>
                   )}
                 </div>

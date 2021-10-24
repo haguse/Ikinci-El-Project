@@ -59,7 +59,7 @@ const ReceivedOffers = () => {
               <div className="offer-accepted">
                 <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
                 <span className="isSold">
-                  {`${offer.isSold === "sold" && `(Ürün Satıldı)`}`}
+                  {`${offer.isSold === "sold" ? `(Ürün Satıldı)` : ""}`}
                 </span>
               </div>
             )}

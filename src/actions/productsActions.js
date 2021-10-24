@@ -138,6 +138,13 @@ export const offerProduct =
           type: PRODUCTS.OFFER_PRODUCT_ERROR,
           payload: err,
         });
-        toast.error("Bu ürüne zaten teklif verdiniz.");
+        toast.error("Bu ürüne teklif verdiniz veya ürün sizin.");
       });
   };
+
+export const isProductOffered = (data) => (dispatch) => {
+  dispatch({
+    type: PRODUCTS.IS_PRODUCT_OFFERED,
+    payload: data,
+  });
+};

@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   errorMessage: "",
   isLoadingProduct: false,
   product: {},
+  isProductOffered: false,
 };
 
 const productsReducer = (state = INITIAL_STATE, action) => {
@@ -54,6 +55,11 @@ const productsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoadingProduct: action.payload,
+      };
+    case PRODUCTS.IS_PRODUCT_OFFERED:
+      return {
+        ...state,
+        isProductOffered: action.payload,
       };
     default:
       return state;
