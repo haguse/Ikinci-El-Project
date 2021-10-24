@@ -108,12 +108,13 @@ export const Wrapper = styled.div`
 
     & button {
       margin-top: 2rem;
-      padding: 1rem 4rem;
+      padding: 1rem 2rem;
       border: none;
       cursor: pointer;
       border-radius: 0.4rem;
       font-size: large;
       max-width: 14rem;
+      min-width: 14rem;
     }
   }
 

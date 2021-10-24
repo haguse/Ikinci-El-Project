@@ -35,6 +35,9 @@ export const Wrapper = styled.div`
       display: flex;
       cursor: pointer;
 
+      border-bottom: 1px solid #e0e0e0;
+      padding-top: 1px;
+
       & p:nth-child(2) {
         margin-left: 2rem;
       }
@@ -45,7 +48,8 @@ export const Wrapper = styled.div`
 
     .active {
       color: #4b9ce2;
-      text-decoration: underline;
+      border-bottom: 1px solid #4b9ce2;
+      padding-bottom: 5px;
       font-weight: bold;
     }
   }
