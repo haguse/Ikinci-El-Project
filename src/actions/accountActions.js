@@ -45,6 +45,7 @@ export const rejectOffer = (id) => (dispatch) => {
         type: ACCOUNT.REJECT_OFFER_SUCCESS,
         payload: res.data,
       });
+      toast.success("Teklif Reddedildi.");
     })
     .catch((err) =>
       dispatch({
@@ -62,6 +63,7 @@ export const acceptOffer = (id) => (dispatch) => {
         type: ACCOUNT.ACCEPT_OFFER_SUCCESS,
         payload: res.data,
       });
+      toast.success("Teklif Onaylandı.");
     })
     .catch((err) =>
       dispatch({

@@ -28,8 +28,13 @@ export const Wrapper = styled.div`
       justify-content: space-between;
       padding: 0.4rem 1rem;
 
+      & span {
+        font-size: 13px;
+      }
+
       &__brand {
         color: #4b9ce2;
+        font-size: 15px;
       }
     }
 

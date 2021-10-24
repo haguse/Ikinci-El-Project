@@ -48,12 +48,11 @@ const DisplayProducts = () => {
                       {product.brand.title}
                     </p>
                     <p>
-                      <span>Renk: </span>
-                      {product.color.title}
+                      <span>Renk: {product.color.title}</span>
                     </p>
                   </div>
                   <div className="product__price">
-                    <span>{product.price}</span>
+                    <span>{product.price} TL</span>
                   </div>
                 </div>
               </Link>

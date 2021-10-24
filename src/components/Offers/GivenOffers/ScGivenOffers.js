@@ -87,6 +87,7 @@ export const ButtonAccept = styled.button`
   border: none;
   border-radius: 0.3rem;
   padding: 0.4rem 1.2rem;
+  margin-left: 1rem;
   cursor: pointer;
 `;
 

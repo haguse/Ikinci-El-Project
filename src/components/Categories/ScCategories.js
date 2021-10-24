@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 1.6rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
   ul {
     display: flex;
     justify-content: space-around;
@@ -19,7 +21,8 @@ export const Wrapper = styled.div`
 
   .active {
     color: #4b9ce2;
-    text-decoration: underline;
     font-weight: bold;
+    border-bottom: 1px solid #4b9ce2;
+    padding-bottom: 3px;
   }
 `;
