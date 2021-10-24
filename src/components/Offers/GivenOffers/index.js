@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Wrapper, Offer, ButtonAccept, ButtonCancel } from "./ScGivenOffers";
 import { cancelOffer } from "../../../actions/accountActions";
-import { purchaseProductById } from "../../../actions/productsActions";
+import BuyOfferedProductModal from "../../Modals/BuyOfferedProductModal";
 
 const GivenOffers = () => {
   const dispatch = useDispatch();
   const givenOffers = useSelector((state) => state.account.givenOffers);
   console.log(givenOffers);
 
+  const [showBuyModal, setShowBuyModal] = useState(false);
+  const [productId, setProductId] = useState(false);
+
   const handleBuy = (id) => {
-    dispatch(purchaseProductById(id));
+    // dispatch(purchaseProductById(id));
+    setProductId(id);
+    setShowBuyModal(true);
   };
 
   const handleCancelOffer = (id) => {
@@ -20,6 +25,13 @@ const GivenOffers = () => {
   return (
     <>
       <Wrapper>
+        {showBuyModal && (
+          <BuyOfferedProductModal
+            isOpen={showBuyModal}
+            closeModal={() => setShowBuyModal(false)}
+            productId={productId}
+          />
+        )}
         {givenOffers.map((offer) => (
           <Offer key={offer.id}>
             <div className="offer__content">
