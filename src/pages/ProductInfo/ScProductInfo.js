@@ -74,6 +74,22 @@ export const Wrapper = styled.div`
       margin-top: 0.8rem;
       width: 100%;
 
+      &__offerPrice {
+        margin-top: 1rem;
+        background-color: #f2f2f2;
+        display: inline-block;
+        padding: 0.4rem 2rem 0.4rem 0.6rem;
+        border-radius: 0.4rem;
+        & p {
+          color: #b1b1b1;
+        }
+
+        & span {
+          color: #525252;
+          font-weight: bold;
+        }
+      }
+
       &__title {
         font-size: x-large;
         font-weight: bold;

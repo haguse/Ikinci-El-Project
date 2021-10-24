@@ -8,9 +8,8 @@ import OfferProductModal from "../../components/Modals/OfferProductModal";
 import Loading from "../../components/Spinner";
 import { ACCESS_TOKEN_NAME } from "../../api";
 import { toast } from "react-toastify";
-import { getGivenOffers } from "../../actions/accountActions";
+import { getGivenOffers, cancelOffer } from "../../actions/accountActions";
 import { isProductOffered } from "../../actions/productsActions";
-import { cancelOffer } from "../../actions/accountActions";
 
 const ProductInfo = () => {
   const token = localStorage.getItem(ACCESS_TOKEN_NAME);
@@ -41,6 +40,7 @@ const ProductInfo = () => {
     if (offer[0]?.product?.id) {
       dispatch(isProductOffered(true));
       var offerId = offer[0].id;
+      var offerPrice = offer[0].offeredPrice;
     } else {
       dispatch(isProductOffered(false));
     }
@@ -94,7 +94,16 @@ const ProductInfo = () => {
               <p className="not-offerable">
                 {!product.isOfferable && "* Ürün Tekliflere Açık Değil"}
               </p>
-              <p className="product__content__price">{product.price}</p>
+              <p className="product__content__price">{product.price} TL</p>
+
+              {token && isOffered && (
+                <div className="product__content__offerPrice">
+                  <p>
+                    Verilen Teklif: <span>{offerPrice} TL</span>
+                  </p>
+                </div>
+              )}
+
               {product.isSold ? (
                 <div className="product__content__button">
                   <button className="cant-buy">Bu Ürün Satışda Değil</button>
