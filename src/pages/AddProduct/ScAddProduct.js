@@ -61,6 +61,27 @@ export const Detail = styled.div`
     input[type="number"] {
       -moz-appearance: textfield;
     }
+    & [type="text"]:valid {
+      background-color: #f0f8ff;
+      border: 1px solid #4b9ce2;
+    }
+
+    & textarea:valid {
+      background-color: #f0f8ff;
+      border: 1px solid #4b9ce2;
+    }
+
+    & [type="text"]:invalid {
+      color: #f77474;
+      background-color: #fff2f2;
+      border: 1px solid #f77474;
+    }
+
+    & textarea:invalid {
+      color: #f77474;
+      background-color: #fff2f2;
+      border: 1px solid #f77474;
+    }
 
     textarea {
       margin-top: 0.5rem;

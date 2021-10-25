@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
 
   .banner {
     width: 100%;
-    max-height: 400px;
+    max-height: 350px;
   }
 
   .selected {

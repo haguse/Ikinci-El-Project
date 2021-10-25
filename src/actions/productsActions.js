@@ -3,6 +3,7 @@ import PRODUCTS from "../constants/productsTypes";
 import baseUrl from "../api";
 import { toast } from "react-toastify";
 import { history } from "../_helpers/history";
+import { getGivenOffers } from "./accountActions";
 
 export const getAllProducts = () => (dispatch) => {
   dispatch({
@@ -46,7 +47,6 @@ export const getProductById = (id) => (dispatch) => {
         payload: false,
       });
     })
-
     .catch((err) =>
       dispatch({
         type: PRODUCTS.GET_PRODUCT_BY_ID_ERROR,
@@ -65,6 +65,8 @@ export const purchaseProductById = (id) => (dispatch) => {
       });
       toast.success("Satın Alındı");
     })
+    .then(() => dispatch(getGivenOffers()))
+    .then(() => dispatch(getProductById(id)))
     .catch((err) => {
       dispatch({
         type: PRODUCTS.PURCHASE_PRODUCT_BY_ID_ERROR,
@@ -133,6 +135,7 @@ export const offerProduct =
         });
         toast.success("Teklif verildi");
       })
+      .then(() => dispatch(getGivenOffers()))
       .catch((err) => {
         dispatch({
           type: PRODUCTS.OFFER_PRODUCT_ERROR,

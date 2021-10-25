@@ -167,7 +167,7 @@ const AddProduct = () => {
               className="product__name"
               type="text"
               placeholder="Örnek: iPhone 12 Pro Max"
-              minLength="1"
+              minLength="3"
               maxLength="100"
               name="title"
               onChange={handleInput}
@@ -178,7 +178,7 @@ const AddProduct = () => {
               id=""
               cols="30"
               rows="4"
-              minLength="1"
+              minLength="5"
               maxLength="500"
               placeholder="Ürün açıklamasını girin (En fazla 100000 karakter)"
               name="description"

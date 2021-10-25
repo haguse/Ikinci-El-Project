@@ -153,21 +153,21 @@ export const Wrapper = styled.div`
         & [type="email"]:invalid {
           color: #f77474;
           background-color: #fff2f2;
-          border: #f77474;
+          border: 1px solid #f77474;
         }
         & [type="email"]:valid {
           background-color: #f0f8ff;
-          border: #4b9ce2;
+          border: 1px solid #4b9ce2;
         }
 
         & [type="password"]:invalid {
           color: #f77474;
           background-color: #fff2f2;
-          border: #f77474;
+          border: 1px solid #f77474;
         }
         & [type="password"]:valid {
           background-color: #f0f8ff;
-          border: #4b9ce2;
+          border: 1px solid #4b9ce2;
         }
       }
 

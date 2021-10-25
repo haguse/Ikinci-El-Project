@@ -20,7 +20,6 @@ const BuyProductModal = ({ isOpen, closeModal, productId }) => {
 
   const handleBuyProduct = () => {
     dispatch(purchaseProductById(productId));
-    console.log("offerdaki id ", productId);
     closeModal();
   };
 

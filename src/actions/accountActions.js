@@ -47,6 +47,9 @@ export const rejectOffer = (id) => (dispatch) => {
       });
       toast.success("Teklif Reddedildi.");
     })
+    .then(() => {
+      dispatch(getReceivedOffers());
+    })
     .catch((err) =>
       dispatch({
         type: ACCOUNT.REJECT_OFFER_ERROR,
@@ -65,6 +68,9 @@ export const acceptOffer = (id) => (dispatch) => {
       });
       toast.success("Teklif Onaylandı.");
     })
+    .then(() => {
+      dispatch(getReceivedOffers());
+    })
     .catch((err) =>
       dispatch({
         type: ACCOUNT.ACCEPT_OFFER_ERROR,
@@ -78,14 +84,17 @@ export const cancelOffer = (id) => (dispatch) => {
     .delete(`${baseUrl}/account/cancel-offer/${id}`)
     .then((res) => {
       dispatch({
-        type: ACCOUNT.ACCEPT_OFFER_SUCCESS,
+        type: ACCOUNT.CANCEL_OFFER_SUCCESS,
         payload: res.data,
       });
       toast.success("Teklifi iptal ettiniz.");
     })
+    .then(() => {
+      dispatch(getGivenOffers());
+    })
     .catch((err) =>
       dispatch({
-        type: ACCOUNT.ACCEPT_OFFER_ERROR,
+        type: ACCOUNT.CANCEL_OFFER_ERROR,
         payload: err,
       })
     );

@@ -10,6 +10,7 @@ export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(125, 182, 231, 0.4);
+  border-radius: 0.4rem;
 
   .modal {
     margin: auto !important;
@@ -29,9 +30,10 @@ export const ModalContainer = styled.div`
     &__info {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-top: 1rem;
       background-color: #f0f8ff;
-      padding: 0.4rem 0.4rem;
+      padding: 0.4rem 1rem;
       & img {
         width: 3rem;
         height: 3rem;

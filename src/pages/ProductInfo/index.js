@@ -17,6 +17,7 @@ const ProductInfo = () => {
   const { id } = useParams();
   const [showBuyModal, setShowBuyModal] = useState(false);
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const [refreshPage, setRefreshPage] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,15 +42,27 @@ const ProductInfo = () => {
       dispatch(isProductOffered(true));
       var offerId = offer[0].id;
       var offerPrice = offer[0].offeredPrice;
+      var offerStatus = offer[0].status;
     } else {
       dispatch(isProductOffered(false));
     }
   }
 
+  const handleButtonBuy = () => {
+    if (token) {
+      setShowBuyModal(true);
+      setRefreshPage(!refreshPage);
+    } else toast.warn("Lütfen giriş yapın.");
+  };
+
   const handleButtonOffer = () => {
     if (token) {
-      if (isOffered) dispatch(cancelOffer(offerId));
-      else setShowOfferModal(true);
+      if (isOffered) {
+        dispatch(cancelOffer(offerId));
+        setRefreshPage(!refreshPage);
+      } else {
+        setShowOfferModal(true);
+      }
     } else toast.warn("Lütfen giriş yapın.");
   };
 
@@ -96,13 +109,16 @@ const ProductInfo = () => {
               </p>
               <p className="product__content__price">{product.price} TL</p>
 
-              {token && isOffered && (
-                <div className="product__content__offerPrice">
-                  <p>
-                    Verilen Teklif: <span>{offerPrice} TL</span>
-                  </p>
-                </div>
-              )}
+              {token &&
+                isOffered &&
+                offerStatus !== "rejected" &&
+                offerStatus !== "accepted" && (
+                  <div className="product__content__offerPrice">
+                    <p>
+                      Verilen Teklif: <span>{offerPrice} TL</span>
+                    </p>
+                  </div>
+                )}
 
               {product.isSold ? (
                 <div className="product__content__button">
@@ -110,17 +126,14 @@ const ProductInfo = () => {
                 </div>
               ) : (
                 <div className="product__content__button">
-                  <ButtonOne
-                    onClick={() => {
-                      if (token) setShowBuyModal(true);
-                      else toast.warn("Lütfen giriş yapın.");
-                    }}
-                  >
-                    Satın Al
-                  </ButtonOne>
+                  <ButtonOne onClick={handleButtonBuy}>Satın Al</ButtonOne>
                   {product.isOfferable && (
-                    <ButtonTwo onClick={() => handleButtonOffer()}>
-                      {isOffered ? "Teklifi Geri Çek" : "Teklif Ver"}
+                    <ButtonTwo onClick={handleButtonOffer}>
+                      {isOffered &&
+                      offerStatus !== "rejected" &&
+                      offerStatus !== "accepted"
+                        ? "Teklifi Geri Çek"
+                        : "Teklif Ver"}
                     </ButtonTwo>
                   )}
                 </div>

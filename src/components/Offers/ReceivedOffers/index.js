@@ -6,7 +6,6 @@ import { acceptOffer, rejectOffer } from "../../../actions/accountActions";
 const ReceivedOffers = () => {
   const dispatch = useDispatch();
   const receivedOffers = useSelector((state) => state.account.receivedOffers);
-  console.log(receivedOffers);
 
   const handleAcceptOffer = (id) => {
     dispatch(acceptOffer(id));
@@ -51,7 +50,7 @@ const ReceivedOffers = () => {
               <div className="offer-rejected">
                 <p style={{ color: "#F77474" }}>Reddedildi</p>
                 <span className="isSold">{`${
-                  offer.isSold === "sold" && `(Ürün Satıldı)`
+                  offer.isSold === "sold" ? "(Ürün Satıldı)" : ""
                 }`}</span>
               </div>
             )}
