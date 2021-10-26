@@ -17,6 +17,11 @@ export const Wrapper = styled.div`
         box-sizing: border-box;
       }
     }
+    @media only screen and (max-width: 600px) {
+      li {
+        font-size: small;
+      }
+    }
   }
 
   .active {

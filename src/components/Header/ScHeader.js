@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   padding: 1rem 7rem;
 
   @media only screen and (max-width: 768px) {
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     flex-direction: column;
 
     .buttons {
