@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
         margin-top: 1rem;
         background-color: #f2f2f2;
         display: inline-block;
-        padding: 0.4rem 2rem 0.4rem 0.6rem;
+        padding: 0.6rem 0.8rem 0.6rem 0.8rem;
         border-radius: 0.4rem;
         & p {
           color: #b1b1b1;

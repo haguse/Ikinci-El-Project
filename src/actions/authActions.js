@@ -1,6 +1,5 @@
 import axios from "axios";
 import baseUrl from "../api";
-import { ACCESS_TOKEN_NAME } from "../api";
 import { history } from "../_helpers/history";
 import { toast } from "react-toastify";
 import { setTokenCookie } from "../api";
@@ -26,7 +25,6 @@ export const signUp = (data) => {
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
           toast.success("Üye oldunuz.");
-          localStorage.setItem(ACCESS_TOKEN_NAME, res.data.access_token);
           localStorage.setItem("email", data.email);
           setTokenCookie("Bearer", res.data.access_token);
           history.push("/");
@@ -49,7 +47,6 @@ export const signIn = (data) => {
       })
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          localStorage.setItem(ACCESS_TOKEN_NAME, res.data.access_token);
           localStorage.setItem("email", data.email);
           setTokenCookie("Bearer", res.data.access_token);
           history.push("/");

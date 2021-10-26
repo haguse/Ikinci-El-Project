@@ -4,22 +4,18 @@ import { Wrapper } from "./ScHeader";
 import { AiOutlinePlus, AiOutlineUser, AiOutlineForm } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { ACCESS_TOKEN_NAME } from "../../api";
 import { history } from "../../_helpers/history";
 import { useLocation } from "react-router";
 import { toast } from "react-toastify";
-import { deleteTokenCookie } from "../../api";
+import { deleteTokenCookie, getCookie } from "../../api";
 
 const Header = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-
   // eslint-disable-next-line no-unused-vars
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const location = useLocation();
 
   const handleLogout = () => {
-    localStorage.removeItem(ACCESS_TOKEN_NAME);
     localStorage.removeItem("email");
     deleteTokenCookie("Bearer");
     setIsAuthenticated(false);
@@ -38,7 +34,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="buttons">
-            {token ? (
+            {getCookie("Bearer") ? (
               <>
                 <Link to="/add-product">
                   <button>

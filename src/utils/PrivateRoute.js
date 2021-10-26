@@ -1,13 +1,13 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { ACCESS_TOKEN_NAME } from "../api";
+import { getCookie } from "../api";
 
 function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        localStorage.getItem(ACCESS_TOKEN_NAME) ? (
+        getCookie("Bearer") ? (
           children
         ) : (
           <Redirect

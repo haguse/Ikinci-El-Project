@@ -6,13 +6,12 @@ import { getProductById } from "../../actions/productsActions";
 import BuyProductModal from "../../components/Modals/BuyProductModal";
 import OfferProductModal from "../../components/Modals/OfferProductModal";
 import Loading from "../../components/Spinner";
-import { ACCESS_TOKEN_NAME } from "../../api";
 import { toast } from "react-toastify";
 import { getGivenOffers, cancelOffer } from "../../actions/accountActions";
 import { isProductOffered } from "../../actions/productsActions";
+import { getCookie } from "../../api";
 
 const ProductInfo = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
   const dispatch = useDispatch();
   const { id } = useParams();
   const [showBuyModal, setShowBuyModal] = useState(false);
@@ -45,14 +44,14 @@ const ProductInfo = () => {
   }
 
   const handleButtonBuy = () => {
-    if (token) {
+    if (getCookie("Bearer")) {
       setShowBuyModal(true);
       setRefreshPage(!refreshPage);
     } else toast.warn("Lütfen giriş yapın.");
   };
 
   const handleButtonOffer = () => {
-    if (token) {
+    if (getCookie("Bearer")) {
       if (
         isOffered &&
         offerStatus !== "acceepted" &&
@@ -109,15 +108,19 @@ const ProductInfo = () => {
               </p>
               <p className="product__content__price">{product.price} TL</p>
 
-              {token &&
+              {getCookie("Bearer") &&
                 isOffered &&
                 offerStatus !== "rejected" &&
-                offerStatus !== "accepted" &&
                 product.isSold !== true && (
                   <div className="product__content__offerPrice">
                     <p>
                       Verilen Teklif: <span>{offerPrice} TL</span>
                     </p>
+                    {offerStatus === "accepted" && (
+                      <p style={{ marginTop: "0.4rem" }}>
+                        (Teklif kabul edildi. Profil sayfanıza gidiniz.)
+                      </p>
+                    )}
                   </div>
                 )}
 

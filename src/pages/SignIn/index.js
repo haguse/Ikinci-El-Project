@@ -4,9 +4,8 @@ import { Wrapper } from "./ScSignIn";
 import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
 import { signIn } from "../../actions/authActions";
-
-import { ACCESS_TOKEN_NAME } from "../../api";
 import { useHistory } from "react-router";
+import { getCookie } from "../../api";
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -25,9 +24,7 @@ const SignIn = () => {
 
   const history = useHistory();
 
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-
-  if (token) {
+  if (getCookie("Bearer")) {
     history.push("/");
   }
 

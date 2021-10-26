@@ -4,12 +4,11 @@ import { Wrapper } from "./ScSignUp";
 import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
 import { signUp } from "../../actions/authActions";
-import { ACCESS_TOKEN_NAME } from "../../api";
 import { history } from "../../_helpers/history";
+import { getCookie } from "../../api";
 
 const SignUp = () => {
-  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
-  if (token) {
+  if (getCookie("Bearer")) {
     history.push("/");
   }
   const [user, setUser] = useState({
