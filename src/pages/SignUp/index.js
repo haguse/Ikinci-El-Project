@@ -4,8 +4,14 @@ import { Wrapper } from "./ScSignUp";
 import logo from "../../images/logo.svg";
 import womanImage from "../../images/Sign Up/Woman.png";
 import { signUp } from "../../actions/authActions";
+import { ACCESS_TOKEN_NAME } from "../../api";
+import { history } from "../../_helpers/history";
 
 const SignUp = () => {
+  const token = localStorage.getItem(ACCESS_TOKEN_NAME);
+  if (token) {
+    history.push("/");
+  }
   const [user, setUser] = useState({
     email: "",
     password: "",

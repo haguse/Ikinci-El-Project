@@ -65,6 +65,7 @@ const SignIn = () => {
                   name="password"
                   type="password"
                   minLength="8"
+                  maxLength="20"
                   placeholder="*****"
                   onChange={handleInput}
                   value={user.password}

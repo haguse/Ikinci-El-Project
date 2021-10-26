@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Wrapper, Offer, ButtonAccept, ButtonReject } from "./ScReceivedOffers";
 import { acceptOffer, rejectOffer } from "../../../actions/accountActions";
+import { Link } from "react-router-dom";
 
 const ReceivedOffers = () => {
   const dispatch = useDispatch();
@@ -22,12 +23,18 @@ const ReceivedOffers = () => {
           <Offer key={offer.id}>
             <div className="offer__content">
               <div className="offer__content__img">
-                <img src={offer.product.imageUrl} alt="" />
+                <Link
+                  to={`/products/${offer.product.category.title}/${offer.product.brand.title}/${offer.product.id}`}
+                >
+                  <img src={offer.product.imageUrl} alt="" />
+                </Link>
               </div>
               <div className="offer__content__desc">
-                <p>
+                <Link
+                  to={`/products/${offer.product.category.title}/${offer.product.brand.title}/${offer.product.id}`}
+                >
                   {offer.product.brand.title} {offer.product.category.title}
-                </p>
+                </Link>
                 <div>
                   Alınan Teklif: <span>{offer.offeredPrice} TL</span>
                 </div>

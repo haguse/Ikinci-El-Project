@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Wrapper, Offer, ButtonAccept, ButtonCancel } from "./ScGivenOffers";
 import { cancelOffer } from "../../../actions/accountActions";
 import BuyOfferedProductModal from "../../Modals/BuyOfferedProductModal";
+import { Link } from "react-router-dom";
 
 const GivenOffers = () => {
   const dispatch = useDispatch();
@@ -34,12 +35,18 @@ const GivenOffers = () => {
           <Offer key={offer.id}>
             <div className="offer__content">
               <div className="offer__content__img">
-                <img src={offer.product.imageUrl} alt="" />
+                <Link
+                  to={`/products/${offer.product.category.title}/${offer.product.brand.title}/${offer.product.id}`}
+                >
+                  <img src={offer.product.imageUrl} alt="" />
+                </Link>
               </div>
               <div className="offer__content__desc">
-                <p>
+                <Link
+                  to={`/products/${offer.product.category.title}/${offer.product.brand.title}/${offer.product.id}`}
+                >
                   {offer.product.brand.title} {offer.product.category.title}
-                </p>
+                </Link>
                 <div>
                   Verilen Teklif: <span>{offer.offeredPrice} TL</span>
                 </div>

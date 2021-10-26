@@ -39,7 +39,7 @@ export const Offer = styled.div`
 
       & div {
         background-color: #f2f2f2;
-        padding: 0.6rem 2.8rem 0.6rem 0.4rem;
+        padding: 0.6rem 1rem 0.6rem 0.4rem;
         border-radius: 0.4rem;
         font-size: small;
         & span {

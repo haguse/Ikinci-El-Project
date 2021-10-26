@@ -179,7 +179,7 @@ const AddProduct = () => {
               rows="4"
               minLength="5"
               maxLength="500"
-              placeholder="Ürün açıklamasını girin (En fazla 100000 karakter)"
+              placeholder="Ürün açıklamasını girin (En fazla 500 karakter)"
               name="description"
               onChange={handleInput}
             ></textarea>
@@ -235,7 +235,7 @@ const AddProduct = () => {
             <input
               className="price"
               type="number"
-              minLength="1"
+              min="0"
               name="price"
               id=""
               placeholder="TL"

@@ -53,7 +53,11 @@ const ProductInfo = () => {
 
   const handleButtonOffer = () => {
     if (token) {
-      if (isOffered) {
+      if (
+        isOffered &&
+        offerStatus !== "acceepted" &&
+        offerStatus !== "rejected"
+      ) {
         dispatch(cancelOffer(offerId));
         setRefreshPage(!refreshPage);
       } else {

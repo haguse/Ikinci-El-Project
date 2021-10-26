@@ -141,7 +141,7 @@ export const offerProduct =
           type: PRODUCTS.OFFER_PRODUCT_ERROR,
           payload: err,
         });
-        toast.error("Bu ürüne teklif verdiniz veya ürün sizin.");
+        toast.error("Bu ürüne daha önce teklif verdiniz veya ürün sizin.");
       });
   };
 
