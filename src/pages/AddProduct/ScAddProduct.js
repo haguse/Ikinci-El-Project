@@ -98,7 +98,6 @@ export const Detail = styled.div`
       @media only screen and (max-width: 1000px) {
         flex-direction: column;
       }
-      /* align-items: center; */
     }
 
     .select {

@@ -29,10 +29,6 @@ const ProductInfo = () => {
   const isLoading = useSelector((state) => state.products.isLoadingProduct);
   const givenOffers = useSelector((state) => state.account.givenOffers);
   const isOffered = useSelector((state) => state.products.isProductOffered);
-  console.log(isLoading);
-
-  console.log(product);
-  console.log({ givenOffers });
 
   if (givenOffers?.length > 0) {
     const offer = givenOffers.filter(
@@ -112,7 +108,8 @@ const ProductInfo = () => {
               {token &&
                 isOffered &&
                 offerStatus !== "rejected" &&
-                offerStatus !== "accepted" && (
+                offerStatus !== "accepted" &&
+                product.isSold !== true && (
                   <div className="product__content__offerPrice">
                     <p>
                       Verilen Teklif: <span>{offerPrice} TL</span>

@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
 
 export const Offer = styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
   &:not(:first-child) {
@@ -33,6 +32,10 @@ export const Offer = styled.div`
   }
   .offer__content {
     display: flex;
+
+    @media screen and (max-width: 1000px) {
+      margin-bottom: 1rem;
+    }
 
     &__desc {
       margin-left: 1rem;
@@ -82,6 +85,7 @@ export const Offer = styled.div`
     color: "#B1B1B1";
     display: inline-block;
     margin-left: 0.4rem;
+    font-size: small;
   }
 `;
 

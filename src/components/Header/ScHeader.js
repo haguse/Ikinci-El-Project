@@ -14,19 +14,12 @@ export const Wrapper = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      /* margin-top: 1rem; */
 
       & button {
         margin-top: 0.8rem;
       }
     }
   }
-
-  /* @media only screen and (max-width: 465px) {
-    & button {
-      margin-top: 0.4rem;
-    }
-  } */
 
   img {
     height: 3rem;

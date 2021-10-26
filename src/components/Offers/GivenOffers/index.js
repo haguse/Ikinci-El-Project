@@ -7,13 +7,11 @@ import BuyOfferedProductModal from "../../Modals/BuyOfferedProductModal";
 const GivenOffers = () => {
   const dispatch = useDispatch();
   const givenOffers = useSelector((state) => state.account.givenOffers);
-  console.log(givenOffers);
 
   const [showBuyModal, setShowBuyModal] = useState(false);
   const [productId, setProductId] = useState(false);
 
   const handleBuy = (id) => {
-    // dispatch(purchaseProductById(id));
     setProductId(id);
     setShowBuyModal(true);
   };
@@ -54,6 +52,12 @@ const GivenOffers = () => {
                   Teklifi İptal Et
                 </ButtonCancel>
               </div>
+            )}
+
+            {offer.isSold === "sold" && offer.status === "offered" && (
+              <span className="isSold">
+                Teklife Cevap Gelmeden Ürün Satıldı
+              </span>
             )}
 
             {offer.status === "rejected" && (

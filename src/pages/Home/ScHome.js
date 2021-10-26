@@ -32,20 +32,11 @@ export const Wrapper = styled.div`
   .selected {
     color: #4b9ce2;
   }
-  /* 
-  .products {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-  } */
 
   .products {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    /* align-items: center; */
     grid-gap: 1rem;
   }
 

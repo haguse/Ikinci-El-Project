@@ -5,7 +5,6 @@ import AddFileIcon from "../../images/Add Product/FileIcon.svg";
 import { useDispatch } from "react-redux";
 
 const DragImage = ({ showProgress }) => {
-  //   const [newProductImage, setNewProductImage] = useState(null);
   const dispatch = useDispatch();
 
   const onDrop = useCallback(

@@ -44,7 +44,7 @@ const ReceivedOffers = () => {
               </div>
             )}
             {offer.isSold === "sold" && offer.status === "offered" && (
-              <p className="isSold">Ürün Satıldı</p>
+              <p className="isSold">Teklife Cevap Vermeden Ürün Satıldı</p>
             )}
             {offer.status === "rejected" && (
               <div className="offer-rejected">
@@ -58,7 +58,11 @@ const ReceivedOffers = () => {
               <div className="offer-accepted">
                 <p style={{ color: "#4B9CE2" }}>Onaylandı</p>
                 <span className="isSold">
-                  {`${offer.isSold === "sold" ? `(Ürün Satıldı)` : ""}`}
+                  {`${
+                    offer.isSold === "sold"
+                      ? "(Ürün Satıldı)"
+                      : "(Alıcı bekleniyor)"
+                  }`}
                 </span>
               </div>
             )}

@@ -16,5 +16,4 @@ const Home = () => {
   );
 };
 
-// export default React.memo(Home);
 export default Home;

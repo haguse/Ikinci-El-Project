@@ -126,7 +126,6 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newProduct);
     if (typeof newProduct.imageUrl === "string") {
       dispatch(addProduct(newProduct));
     } else {

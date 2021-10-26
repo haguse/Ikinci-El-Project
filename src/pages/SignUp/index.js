@@ -18,7 +18,6 @@ const SignUp = () => {
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
   return (
     <Wrapper>

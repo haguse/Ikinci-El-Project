@@ -77,6 +77,7 @@ export const Offer = styled.div`
   .isSold {
     color: "#B1B1B1";
     display: inline-block;
+    font-size: small;
     margin-left: 0.4rem;
   }
 `;

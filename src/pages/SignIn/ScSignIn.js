@@ -97,19 +97,12 @@ export const Wrapper = styled.div`
   .container__content {
     display: flex;
     flex: 1;
-    /* margin-top: 3rem; */
     flex-direction: column;
-    /* padding: 1rem 0 1rem 0; */
     align-items: center;
     margin: auto;
 
     & img {
       margin-bottom: 2rem;
-    }
-
-    &__img {
-      position: absolute;
-      top: 20px;
     }
 
     & .sign {
@@ -119,7 +112,6 @@ export const Wrapper = styled.div`
       padding: 5rem 4rem;
       width: 50%;
       border-radius: 1rem;
-      /* margin-top: 2rem; */
       position: relative;
 
       &__texts {

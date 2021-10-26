@@ -11,7 +11,7 @@ export const uploadFile = (data) => (dispatch) => {
       onUploadProgress: (progressEvent) => {
         const { loaded, total } = progressEvent;
         let percent = Math.floor((loaded * 100) / total);
-        console.log(`${loaded} kb of ${total} kb | ${percent}%`);
+        // console.log(`${loaded} kb of ${total} kb | ${percent}%`);
         dispatch({
           type: FILE.UPLOADING_PROGRESS,
           payload: percent,
@@ -19,7 +19,6 @@ export const uploadFile = (data) => (dispatch) => {
       },
     })
     .then((res) => {
-      console.log(res);
       dispatch({
         type: FILE.UPLOAD_FILE_SUCCESS,
         payload: res.data,
