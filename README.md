@@ -21,9 +21,9 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#available-scripts">Available Scripts</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -48,16 +48,13 @@ Ikinci El is the project I developed as a graduation project at the end of the 1
 - [React.js](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
-- [Styled Components](https://styled-components.com/)
+- [Styled Components](https://styled-components.com/) (With Sass)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -66,23 +63,24 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-yarn
+Clone the repo
 
 ```sh
-git clone https://github.com/github_username/repo_name.git
+git clone https://github.com/haguse/Ikinci-El-Project.git
 ```
+
+<br/>
 
 Install packages
 
-```sh
-yarn or npm install
-```
+`yarn` or `npm install`
+
+<br/>
 
 Start
 
-```sh
-yarn start or npm start
-```
+`yarn start` or `npm start`
+<br/>
 
 ### Available Scripts
 
@@ -127,7 +125,7 @@ Halit Güven Serin - [Personal Website](https://halitguvenserin.com) - halitguve
 
 - [Patika](https://www.patika.dev/)
 - [Ciceksepeti.com / Lolaflora.com](https://www.ciceksepeti.com/)
-- Caglayan Yanikoglu
+- [Caglayan Yanikoglu](https://github.com/CaglayanYanikoglu)
 - Bootcamp Assistants
 
 <p align="right">(<a href="#top">back to top</a>)</p>
