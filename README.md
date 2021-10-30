@@ -22,6 +22,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#available-scripts">Available Scripts</a></li>
+        <li><a href="#performance">Performance</a></li>
       </ul>
     </li>
     <li><a href="#license">License</a></li>
@@ -100,6 +101,16 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### Performance
+
+##### Desktop
+
+<img src="./src/images/Markdown/LighthouseDesktop.png" alt="Desktop">
+
+##### Mobile
+
+<img src="./src/images/Markdown/LighthouseMobile.png" alt="Mobile">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
